@@ -11,15 +11,17 @@ if [ -z "${APP_KEY:-}" ] || [ "$APP_KEY" = "" ]; then
 	php artisan key:generate --force || true
 fi
 
-# If using SQLite, ensure database file exists
+# If using SQLite, ensure database file exists and is writable
 if [ "${DB_CONNECTION:-}" = "sqlite" ]; then
 	DB_FILE_PATH="${DB_DATABASE:-/var/www/html/database/database.sqlite}"
 	mkdir -p "$(dirname "$DB_FILE_PATH")" || true
 	if [ ! -f "$DB_FILE_PATH" ]; then
 		touch "$DB_FILE_PATH" || true
-		chown www-data:www-data "$DB_FILE_PATH" || true
-		chmod 664 "$DB_FILE_PATH" || true
 	fi
+	# Ensure database directory and file are writable by www-data
+	chown -R www-data:www-data "$(dirname "$DB_FILE_PATH")" || true
+	chmod -R 775 "$(dirname "$DB_FILE_PATH")" || true
+	chmod 664 "$DB_FILE_PATH" || true
 fi
 
 # Ensure storage subdirectories exist and are writable
