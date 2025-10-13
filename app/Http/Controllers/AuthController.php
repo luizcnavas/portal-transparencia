@@ -7,57 +7,67 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Mostra o formulário de login.
-     */
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
+	/**
+	 * Mostra o formulário de login.
+	 */
+	public function showLoginForm()
+	{
+		return view('auth.login');
+	}
 
-    /**
-     * Trata tentativa de autenticação.
-     *
-     * Anotação: neste projeto há uma verificação simplificada de credenciais
-     * (login:admin / password:admin) que, em dev, loga o primeiro usuário do
-     * banco como administrador. Não usar em produção. Comentário apenas.
-     */
-    public function login(Request $request)
-    {
-        $credentials = $request->only('login', 'password');
+	/**
+	 * Trata tentativa de autenticação.
+	 *
+	 * Primeiro tenta autenticar por email+senha. Se falhar, mantém o
+	 * fallback de desenvolvimento (login:admin / password:admin) que
+	 * autentica o primeiro usuário disponível.
+	 */
+	public function login(Request $request)
+	{
+		$request->validate([
+			'login' => ['required', 'string'],
+			'password' => ['required', 'string'],
+		]);
 
-    // Verifica credenciais fixas (simplificado)
-        if ($credentials['login'] === 'admin' && $credentials['password'] === 'admin') {
-            // Login manual de um usuário (simplificado)
-            // Usa o primeiro usuário disponível como admin
-            $user = \App\Models\User::first();
-            if ($user) {
-                Auth::login($user);
-                $request->session()->regenerate();
-                return redirect()->intended('admin/dashboard');
-            }
-            // Se não houver usuário, não conseguimos logar
-            // Fallback para autenticação simplificada
-        }
+		$login = $request->input('login');
+		$password = $request->input('password');
 
-        return back()->withErrors([
-            'login' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-        ]);
-    }
+		// 1) Autenticação padrão por email+senha
+		if (str_contains($login, '@')) {
+			if (Auth::attempt(['email' => $login, 'password' => $password])) {
+				$request->session()->regenerate();
+				return redirect()->intended('admin/dashboard');
+			}
+		}
 
-    /**
-     * Faz logout do usuário.
-     *
-     * Anotação: invalida sessão e regenera token CSRF.
-     */
-    public function logout(Request $request)
-    {
-        Auth::logout();
+		// 2) Fallback simplificado de desenvolvimento
+		if ($login === 'admin' && $password === 'admin') {
+			$user = \App\Models\User::first();
+			if ($user) {
+				Auth::login($user);
+				$request->session()->regenerate();
+				return redirect()->intended('admin/dashboard');
+			}
+		}
 
-        $request->session()->invalidate();
+		return back()->withErrors([
+			'login' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+		]);
+	}
 
-        $request->session()->regenerateToken();
+	/**
+	 * Faz logout do usuário.
+	 *
+	 * Anotação: invalida sessão e regenera token CSRF.
+	 */
+	public function logout(Request $request)
+	{
+		Auth::logout();
 
-        return redirect('/');
-    }
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+
+		return redirect('/');
+	}
 }
