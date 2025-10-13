@@ -61,12 +61,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copy Composer files first and install dependencies for better caching
-COPY composer.json composer.lock ./
-RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
-
-# Copy application source
+# Copy application source first so artisan is present for composer scripts
 COPY . .
+
+# Install PHP dependencies (now with artisan available for post-scripts)
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 
 # Copy built assets from node stage
 COPY --from=nodebuilder /app/public/build ./public/build
