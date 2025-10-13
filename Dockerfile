@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y \
 	libpng-dev \
 	libjpeg62-turbo-dev \
 	libfreetype6-dev \
+	libonig-dev \
 	sqlite3 \
 	libsqlite3-dev \
 	&& rm -rf /var/lib/apt/lists/*
