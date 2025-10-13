@@ -45,5 +45,8 @@ php artisan storage:link || true
 # Run database migrations if database is reachable
 php artisan migrate --force || true
 
+# Seed database (non-fatal) to create default admin if missing
+php artisan db:seed --force || true
+
 # Start Apache in foreground
 apache2-foreground
