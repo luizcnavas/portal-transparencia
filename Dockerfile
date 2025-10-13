@@ -4,13 +4,15 @@
 FROM node:20-alpine AS nodebuilder
 WORKDIR /app
 
-# Copy only files needed for build to leverage Docker cache
+# Install deps with cache
 COPY package*.json ./
-COPY vite.config.js ./
-COPY resources ./resources
+RUN npm ci
 
-# Install and build assets
-RUN npm ci && npm run build
+# Copy the rest of the project needed for the asset build (Tailwind/Vite configs, resources, etc.)
+COPY . .
+
+# Build assets
+RUN npm run build
 
 # --- Stage 2: PHP + Apache runtime ---
 FROM php:8.2-apache
@@ -20,11 +22,13 @@ RUN apt-get update && apt-get install -y \
 	git \
 	zip \
 	unzip \
+	pkg-config \
 	libzip-dev \
 	libpng-dev \
 	libjpeg62-turbo-dev \
 	libfreetype6-dev \
 	sqlite3 \
+	libsqlite3-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 # PHP extensions commonly used by Laravel
