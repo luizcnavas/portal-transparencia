@@ -66,7 +66,7 @@ class AuthController extends Controller
 
 		return back()->withErrors([
 			'login' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-		]);
+		])->withInput($request->only('login'));
 	}
 
 	/**
