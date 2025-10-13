@@ -22,6 +22,11 @@ if [ "${DB_CONNECTION:-}" = "sqlite" ]; then
 	fi
 fi
 
+# Ensure storage subdirectories exist and are writable
+mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs || true
+chown -R www-data:www-data storage bootstrap/cache || true
+chmod -R 775 storage bootstrap/cache || true
+
 # If a custom PORT is provided by the platform, reconfigure Apache to listen on it
 if [ -n "${PORT:-}" ]; then
 	# Update ports.conf and default vhost to use $PORT
