@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Portal de Transparência</title>
+	<meta name="description" content="Portal de Transparência - versão estática para GitHub Pages">
+	<style>
+		:root { color-scheme: light dark; }
+		* { box-sizing: border-box; }
+		body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif; line-height: 1.5; }
+		header { padding: 48px 16px; text-align: center; background: linear-gradient(135deg, #0ea5e9, #22c55e); color: #fff; }
+		h1 { margin: 0 0 8px; font-size: 2rem; }
+		p.lead { margin: 0; opacity: .95; }
+		main { padding: 32px 16px; max-width: 960px; margin: 0 auto; }
+		.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+		.card { border: 1px solid rgba(0,0,0,.12); border-radius: 12px; padding: 20px; background: rgba(255,255,255,.75); backdrop-filter: blur(6px); }
+		.card h3 { margin-top: 0; font-size: 1.1rem; }
+		footer { padding: 24px 16px; text-align: center; color: #6b7280; }
+		a.button { display: inline-block; margin-top: 8px; padding: 10px 14px; border-radius: 10px; background: #0ea5e9; color: #fff; text-decoration: none; }
+		a.button:hover { background: #0284c7; }
+		.small { font-size: .925rem; color: #4b5563; }
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Portal de Transparência</h1>
+		<p class="lead">Versão estática para GitHub Pages</p>
+	</header>
+	<main>
+		<p class="small">
+			Esta é uma página estática publicada via GitHub Pages. O aplicativo completo é uma aplicação Laravel (PHP) e precisa de um servidor com PHP para executar as rotas dinâmicas. Abaixo estão atalhos úteis.
+		</p>
+		<div class="grid" role="list">
+			<section class="card" role="listitem">
+				<h3>Projeto no GitHub</h3>
+				<p>Veja o código-fonte, issues e documentação.</p>
+				<p><a class="button" href="https://github.com/luizcnavas/portal-transparencia" rel="noopener noreferrer">Abrir repositório</a></p>
+			</section>
+			<section class="card" role="listitem">
+				<h3>Execução local</h3>
+				<p>Siga o guia no README para rodar o Laravel localmente.</p>
+				<p><a class="button" href="https://github.com/luizcnavas/portal-transparencia#-instala%C3%A7%C3%A3o-passo-a-passo" rel="noopener noreferrer">Instruções</a></p>
+			</section>
+			<section class="card" role="listitem">
+				<h3>Publicação completa</h3>
+				<p>Para produção, hospede o Laravel em um provedor com PHP.</p>
+				<p><a class="button" href="https://laravel.com/docs" rel="noopener noreferrer">Documentação Laravel</a></p>
+			</section>
+		</div>
+	</main>
+	<footer>
+		<small>© <span id="year"></span> Portal de Transparência • Feito com Laravel</small>
+	</footer>
+	<script>
+		document.getElementById('year').textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
