@@ -6,6 +6,7 @@
     <title>Portal da Transparência - AEAPS</title>
     <!-- Bootstrap 5 CSS (carregado via CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         body {
             display: flex;
@@ -22,35 +23,35 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light  menu">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">AEAPS Transparência</a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img class="logo" src="{{ asset('assets/img/LogoAEAPSBranca.png') }}" alt="Logo AEAPS" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Início</a>
+                            <a class="nav-link itemMenu"  href="{{ route('home') }}">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('documentos.index') }}">Documentos</a>
+                            <a class="nav-link itemMenu" href="{{ route('documentos.index') }}">Documentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('noticias.index') }}">Notícias</a>
+                            <a class="nav-link itemMenu" href="{{ route('noticias.index') }}">Notícias</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle itemMenu" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Finanças
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('transacoes.index', ['tipo' => 'receita']) }}">Receitas</a></li>
-                                <li><a class="dropdown-item" href="{{ route('transacoes.index', ['tipo' => 'despesa']) }}">Despesas</a></li>
+                            <ul class="dropdown-menu submenu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item itemsubmenu" href="{{ route('transacoes.index', ['tipo' => 'receita']) }}">Receitas</a></li>
+                                <li><a class="dropdown-item itemsubmenu" href="{{ route('transacoes.index', ['tipo' => 'despesa']) }}">Despesas</a></li>
                             </ul>
                         </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link itemMenu" href="{{ route('login') }}">Login</a>
                             </li>
                         @endguest
                         @auth

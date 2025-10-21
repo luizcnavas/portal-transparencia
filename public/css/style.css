@@ -1,0 +1,102 @@
+body{
+    font-size: 14px;
+    background-color: #c5ffc7;
+}
+.footer{
+    background-color: #c5ffc7 !important;
+    border-top: 10px;
+    border-color: #20752b;
+}
+.menu {
+    background-color: #20752b; 
+    color: #fff;
+    height: 6.5rem;
+}
+.submenu{
+    background-color: #20752b; 
+    color: #fff;
+}
+.logo{
+    width: 11.5rem;
+    height: 6rem;
+    object-fit: contain;
+}
+.itemMenu{
+    color: #fff;
+    font-size: 1.2rem;
+    padding-top: 2rem;
+}
+.itemMenu:hover{
+    color: #adf3af;
+}
+.itemsubmenu{
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.6rem;
+}
+.tituloHome{
+    background-color: #c5ffc7;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+.titulo{
+    color: #20752b;
+}
+.txtbtn{
+    color:#20752b;
+    /*font-weight: bold;*/
+    font-size: 1.2rem;
+    text-align: center;
+    padding-top: 0.7rem;
+}
+.TodosbtnsHome{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.btnHome {
+    background-color: #c5ffc7;
+    border-radius: 50%;
+    object-fit: contain;
+    margin: 2rem;
+}
+.btnCarteira, .btnFinanceiro, .btnPessoal, .btnLeg, .btnReceita, .btnInfo{
+    width: 7rem;
+    height: 7rem;
+    object-fit: fill;
+    padding: 0;
+}
+.caixasubtit{
+    width: 90%;
+    text-align: left;
+}
+.subtit{
+    font-size: 1.3rem;
+    padding-left: 5.8rem;
+    padding-right: 5.8rem;
+}
+.caixaTitulo{
+    padding-bottom: 20px !important;
+}
+.pesquisa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 2rem;
+}
+.campoPesquisa{
+    padding: 10px;
+    border-radius: 50px;
+    width: 85%;
+    border-color: #20752b;
+    border-width: 2px;
+    color: rgb(135, 131, 131);
+    font-size: 1.2rem;
+}
