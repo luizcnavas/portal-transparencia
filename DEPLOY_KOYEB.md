@@ -89,8 +89,10 @@ composer install --optimize-autoloader --no-dev && php artisan config:cache && p
 
 **Start Command:**
 ```bash
-php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:8000 -t public
+php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:8000 server.php
 ```
+
+**Nota importante:** O arquivo `server.php` é usado para servir corretamente arquivos estáticos (CSS, JS, imagens) quando usando o servidor embutido do PHP.
 
 ### 4. Configurações Importantes
 

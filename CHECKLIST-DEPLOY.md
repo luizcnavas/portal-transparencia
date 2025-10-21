@@ -52,8 +52,10 @@ composer install --optimize-autoloader --no-dev && php artisan config:cache && p
 ### Start Command
 
 ```bash
-php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:8000 -t public
+php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:8000 server.php
 ```
+
+**Importante:** Use `server.php` para servir corretamente CSS, JS e imagens!
 
 - [ ] Start command configurado
 
