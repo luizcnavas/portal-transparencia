@@ -15,7 +15,7 @@ Um sistema web desenvolvido em Laravel para gestão de transparência financeira
 - [Troubleshooting](#troubleshooting)
 - [Suporte](#suporte)
 
-## 🎯 Sobre o Projeto
+## Sobre o Projeto
 
 O Portal de Transparência é uma aplicação web desenvolvida para facilitar a gestão e visualização de informações financeiras de forma transparente. O sistema permite:
 
@@ -25,7 +25,7 @@ O Portal de Transparência é uma aplicação web desenvolvida para facilitar a 
 - **Dashboard Administrativo**: Painel com estatísticas e totais
 - **Interface Responsiva**: Design moderno e adaptável
 
-## ⚡ Funcionalidades
+## Funcionalidades
 
 ### Para Usuários Públicos
 - Visualização de totais financeiros (receitas, despesas e saldo)
@@ -40,7 +40,7 @@ O Portal de Transparência é uma aplicação web desenvolvida para facilitar a 
 - CRUD completo de notícias
 - Sistema de autenticação seguro
 
-## 🔧 Pré-requisitos
+## Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado em seu computador:
 
@@ -200,7 +200,7 @@ composer run setup
 composer run dev
 ```
 
-## 🗄️ Estrutura do Banco de Dados
+## Estrutura do Banco de Dados
 
 ### Tabelas Principais
 
@@ -215,7 +215,7 @@ composer run dev
 - Documentos podem estar relacionados a transações
 - Sistema de autenticação integrado
 
-## 📱 Uso do Sistema
+## Uso do Sistema
 
 ### Acesso Público
 
@@ -236,7 +236,7 @@ Após executar os seeders, use:
 - **Email**: admin@exemplo.com
 - **Senha**: password
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Problemas Comuns
 
@@ -285,7 +285,21 @@ php artisan route:list
 tail -f storage/logs/laravel.log
 ```
 
-## 📞 Suporte
+## Suporte
+
+### Deploy em Produção
+
+Este projeto está pronto para deploy em serviços como Koyeb, Heroku, Railway, etc.
+
+📖 **Consulte os seguintes arquivos para deploy:**
+- `DEPLOY_KOYEB.md` - Guia completo de deploy no Koyeb
+- `CHECKLIST-DEPLOY.md` - Checklist passo a passo
+- `LEIA-ME-PRIMEIRO.md` - Instruções rápidas
+
+🔧 **Correções recentes:**
+- Adicionado middleware TrustProxies para funcionamento em proxies reversos
+- Configurações de sessão otimizadas para HTTPS
+- Script de verificação de ambiente (`check-env.php`)
 
 ### Para Professores
 

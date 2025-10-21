@@ -163,9 +163,12 @@ return [
     | to the server if the browser has a HTTPS connection. This will keep
     | the cookie from being sent to you when it can't be done securely.
     |
+    | Para produção em HTTPS (Koyeb, Heroku, etc), defina SESSION_SECURE_COOKIE=true
+    | Para desenvolvimento local em HTTP, deixe null ou false
+    |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', null),
 
     /*
     |--------------------------------------------------------------------------

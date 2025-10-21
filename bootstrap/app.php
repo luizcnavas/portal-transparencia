@@ -11,7 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Arquivo bootstrap — carregamentos adicionais podem ser feitos aqui
+        // Configurar proxy confiável para ambientes de produção (Koyeb, etc.)
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Configurações de exceções podem ser registradas aqui
