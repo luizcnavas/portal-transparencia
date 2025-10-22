@@ -56,12 +56,12 @@
                         @endguest
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                <a class="nav-link itemMenu" href="{{ route('admin.dashboard') }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                    <button type="submit itemMenu" class="btn btn-link nav-link">Logout</button>
                                 </form>
                             </li>
                         @endauth

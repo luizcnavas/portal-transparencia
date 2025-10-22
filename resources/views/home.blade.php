@@ -13,27 +13,27 @@
 </div>
 <div class="TodosbtnsHome">
     <div class="btnHome">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnCarteira" src="{{ asset('assets/img/botoes/btnDespesas.png') }}" alt="Imagem de carteira"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnCarteira" src="{{ asset('assets/img/botoes/btnDespesas.png') }}" alt="imagem Despesas"/></a>
         <p class="txtbtn">Despesas</p>
     </div>
     <div class="btnHome">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnFinanceiro" src="{{ asset('assets/img/botoes/btnFinanceiro.png') }}" alt="Imagem de carteira"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnFinanceiro" src="{{ asset('assets/img/botoes/btnFinanceiro.png') }}" alt="Imagem Financeiro"/></a>
         <p class="txtbtn">Financeiro</p>
     </div>
     <div class="btnHome">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoa.png') }}" alt="Imagem de carteira"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoa.png') }}" alt="Imagem Pessoal"/></a>
         <p class="txtbtn">Pessoal</p>
     </div>
     <div class="btnHome">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnLeg" src="{{ asset('assets/img/botoes/btnLegislacao.png') }}" alt="Imagem de carteira"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnLeg" src="{{ asset('assets/img/botoes/btnLegislacao.png') }}" alt="Imagem Legislação"/></a>
         <p class="txtbtn">Legislação</p>
     </div>
     <div class="btnHome">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnReceita" src="{{ asset('assets/img/botoes/btnReceitas.png') }}" alt="Imagem de carteira"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnReceita" src="{{ asset('assets/img/botoes/btnReceitas.png') }}" alt="Imagem Receitas"/></a>
         <p class="txtbtn">Receitas</p>
     </div>
     <div class="btnHome">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnInfo" src="{{ asset('assets/img/botoes/btnInfo.png') }}" alt="Imagem de carteira"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnInfo" src="{{ asset('assets/img/botoes/btnInfo.png') }}" alt="Imagem Informações"/></a>
         <p class="txtbtn">Informações</p>
     </div>
 </div>
