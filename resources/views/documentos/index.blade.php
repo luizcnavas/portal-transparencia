@@ -8,34 +8,7 @@
         @endauth
     </div>
 
-    <div class="card mb-4">
-        <div class="card-body">
-            <form method="GET" action="{{ route('documentos.index') }}">
-                <div class="row">
-                    <div class="col-md-4">
-                        <select name="categoria" class="form-select">
-                            <option value="">Todas as categorias</option>
-                            @foreach($categorias as $categoria)
-                                <option value="{{ $categoria }}" {{ request('categoria') == $categoria ? 'selected' : '' }}>
-                                    {{ $categoria }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                        <div class="col-md-3">
-                            <select name="tipo" class="form-select">
-                                <option value="">Todos os tipos</option>
-                                <option value="receita" {{ request('tipo') == 'receita' ? 'selected' : '' }}>Receita</option>
-                                <option value="despesa" {{ request('tipo') == 'despesa' ? 'selected' : '' }}>Despesa</option>
-                            </select>
-                        </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-secondary">Filtrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+        <div class="card">
 
     <div class="card">
         <div class="card-body">
@@ -43,9 +16,8 @@
                 <thead>
                     <tr>
                         <th>Título</th>
-                        <th>Categoria</th>
-                        <th>Tipo</th>
-                        <th>Valor</th>
+                        <th>Ata de Diretoria</th>
+                        <th>CNPJ</th>
                         <th>Data de Publicação</th>
                         <th class="text-end">Ação</th>
                     </tr>
@@ -54,19 +26,8 @@
                     @forelse($documentos as $documento)
                         <tr>
                             <td>{{ $documento->titulo }}</td>
-                            
-                            <td>{{ $documento->categoria }}</td>
-                            
-                            <td>
-                                @if($documento->tipo === 'receita')
-                                    <span class="badge bg-success">Receita</span>
-                                @elseif($documento->tipo === 'despesa')
-                                    <span class="badge bg-danger">Despesa</span>
-                                @else
-                                    <span class="badge bg-secondary">—</span>
-                                @endif
-                            </td>
-                            <td>R$ {{ number_format($documento->valor ?? 0, 2, ',', '.') }}</td>
+                            <td>{{ $documento->ata_diretoria ?? '—' }}</td>
+                            <td>{{ $documento->cnpj ?? '—' }}</td>
                             <td>{{ $documento->created_at->format('d/m/Y') }}</td>
                             <td class="text-end">
                                 <a href="{{ route('documentos.show', $documento) }}" class="btn btn-sm btn-info me-1">Detalhes</a>
@@ -83,7 +44,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">Nenhum documento encontrado.</td>
+                            <td colspan="5" class="text-center">Nenhum documento encontrado.</td>
                         </tr>
                     @endforelse
                 </tbody>

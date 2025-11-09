@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Adicionar Novo Documento</h1>
-    {{-- Anotação: formulário simples para criar documento com metadados e upload de arquivo. --}}
+    <h1>Adicionar Nova Legislação</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -16,7 +15,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.documentos.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.legislacoes.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
@@ -28,14 +27,14 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="ata_diretoria" class="form-label">Ata de Diretoria</label>
-                    <input type="text" class="form-control" id="ata_diretoria" name="ata_diretoria">
+                    <label for="estatuto_social" class="form-label">Estatuto Social</label>
+                    <input type="text" class="form-control" id="estatuto_social" name="estatuto_social">
                     <small class="text-muted">Campo opcional</small>
                 </div>
 
                 <div class="mb-3">
-                    <label for="cnpj" class="form-label">CNPJ</label>
-                    <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00">
+                    <label for="certificado_nacional" class="form-label">Certificado Nacional</label>
+                    <input type="text" class="form-control" id="certificado_nacional" name="certificado_nacional">
                     <small class="text-muted">Campo opcional</small>
                 </div>
 
@@ -44,7 +43,7 @@
                     <input class="form-control" type="file" id="arquivo" name="arquivo" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="{{ route('admin.documentos.index') }}" class="btn btn-secondary">Cancelar</a>
+                <a href="{{ route('admin.legislacoes.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
     </div>

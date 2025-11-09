@@ -10,25 +10,21 @@
             <h2 class="h5">{{ $documento->titulo }}</h2>
             <hr>
             <dl class="row">
-                <dt class="col-sm-3">Categoria</dt>
-                <dd class="col-sm-9">{{ $documento->categoria }}</dd>
-
                 <dt class="col-sm-3">Data de Publicação</dt>
                 <dd class="col-sm-9">{{ $documento->created_at->format('d/m/Y H:i') }}</dd>
 
                 <dt class="col-sm-3">Descrição</dt>
                 <dd class="col-sm-9"><p>{!! nl2br(e($documento->descricao)) !!}</p></dd>
 
-                <dt class="col-sm-3">Lançamento Financeiro</dt>
-                <dd class="col-sm-9">
-                    @if($documento->tipo == 'receita')
-                        <span class="badge bg-success fs-6">Receita: R$ {{ number_format($documento->valor, 2, ',', '.') }}</span>
-                    @elseif($documento->tipo == 'despesa')
-                        <span class="badge bg-danger fs-6">Despesa: R$ {{ number_format($documento->valor, 2, ',', '.') }}</span>
-                    @else
-                        <span class="text-muted">Não especificado</span>
-                    @endif
-                </dd>
+                @if($documento->ata_diretoria)
+                    <dt class="col-sm-3">Ata de Diretoria</dt>
+                    <dd class="col-sm-9">{{ $documento->ata_diretoria }}</dd>
+                @endif
+
+                @if($documento->cnpj)
+                    <dt class="col-sm-3">CNPJ</dt>
+                    <dd class="col-sm-9">{{ $documento->cnpj }}</dd>
+                @endif
             </dl>
 
             <hr>

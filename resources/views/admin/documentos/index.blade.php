@@ -37,9 +37,8 @@
                 <thead>
                     <tr>
                         <th>Título</th>
-                        <th>Categoria</th>
-                        <th>Tipo</th>
-                        <th>Valor</th>
+                        <th>Ata de Diretoria</th>
+                        <th>CNPJ</th>
                         <th>Data de Upload</th>
                         <th class="text-end">Ações</th>
                     </tr>
@@ -48,17 +47,8 @@
                     @forelse($documentos as $documento)
                         <tr>
                             <td>{{ $documento->titulo }}</td>
-                            <td>{{ $documento->categoria }}</td>
-                            <td>
-                                @if($documento->tipo === 'receita')
-                                    <span class="badge bg-success">Receita</span>
-                                @elseif($documento->tipo === 'despesa')
-                                    <span class="badge bg-danger">Despesa</span>
-                                @else
-                                    <span class="badge bg-secondary">—</span>
-                                @endif
-                            </td>
-                            <td>R$ {{ number_format($documento->valor ?? 0, 2, ',', '.') }}</td>
+                            <td>{{ $documento->ata_diretoria ?? '—' }}</td>
+                            <td>{{ $documento->cnpj ?? '—' }}</td>
                             <td>{{ $documento->created_at->format('d/m/Y') }}</td>
                             <td class="text-end">
                                 <a href="{{ route('documentos.show', $documento) }}" class="btn btn-sm btn-info me-1">Detalhes</a>
@@ -73,7 +63,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">Nenhum documento encontrado.</td>
+                            <td colspan="5" class="text-center">Nenhum documento encontrado.</td>
                         </tr>
                     @endforelse
                 </tbody>

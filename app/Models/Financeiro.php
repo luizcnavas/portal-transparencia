@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Documento extends Model
+class Financeiro extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'titulo',
         'descricao',
+        'tipo',
+        'valor',
+        'planejamento_estrategico',
         'caminho_arquivo',
-        'ata_diretoria',
-        'cnpj',
     ];
 }

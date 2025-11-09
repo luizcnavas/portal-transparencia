@@ -6,6 +6,8 @@
     <title>Portal da Transparência - AEAPS</title>
     <!-- Bootstrap 5 CSS (carregado via CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
      <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <style>
         body {
@@ -38,16 +40,16 @@
                             <a class="nav-link itemMenu" href="{{ route('documentos.index') }}">Documentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link itemMenu" href="{{ route('noticias.index') }}">Notícias</a>
+                            <a class="nav-link itemMenu" href="{{ route('financeiros.index') }}">Financeiro</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle itemMenu" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Finanças
-                            </a>
-                            <ul class="dropdown-menu submenu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item itemsubmenu" href="{{ route('transacoes.index', ['tipo' => 'receita']) }}">Receitas</a></li>
-                                <li><a class="dropdown-item itemsubmenu" href="{{ route('transacoes.index', ['tipo' => 'despesa']) }}">Despesas</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link itemMenu" href="{{ route('legislacoes.index') }}">Legislação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link itemMenu" href="{{ route('informacoes.index') }}">Informações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link itemMenu" href="{{ route('noticias.index') }}">Notícias</a>
                         </li>
                         @guest
                             <li class="nav-item">
@@ -56,12 +58,12 @@
                         @endguest
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                <a class="nav-link itemMenu" href="{{ route('admin.dashboard') }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                    <button type="submit" class="btn btn-link nav-link itemMenu">Logout</button>
                                 </form>
                             </li>
                         @endauth

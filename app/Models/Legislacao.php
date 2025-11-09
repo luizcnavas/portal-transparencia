@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Documento extends Model
+class Legislacao extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'titulo',
         'descricao',
+        'estatuto_social',
+        'certificado_nacional',
         'caminho_arquivo',
-        'ata_diretoria',
-        'cnpj',
     ];
 }

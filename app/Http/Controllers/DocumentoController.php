@@ -9,39 +9,23 @@ use Illuminate\Support\Facades\Storage;
 class DocumentoController extends Controller
 {
     /**
-     * Lista documentos públicos com filtros disponíveis.
+     * Lista documentos públicos com paginação.
      *
-     * Aplica filtros por categoria/tipo e usa paginação. Quando a rota
-     * pertence ao prefixo 'admin', retorna a view administrativa com
-     * opções de CRUD.
+     * Quando a rota pertence ao prefixo 'admin', retorna a view
+     * administrativa com opções de CRUD.
      */
     public function index(Request $request)
     {
-        $request->validate([
-            'tipo' => 'nullable|in:receita,despesa',
-        ]);
+        $documentos = Documento::latest()->paginate(10);
 
-        $tipo = $request->query('tipo');
-
-        $query = Documento::query();
-        if ($request->filled('categoria')) {
-            $query->where('categoria', $request->categoria);
-        }
-        if ($tipo) {
-            $query->where('tipo', $tipo);
-        }
-
-        $documentos = $query->latest()->paginate(10);
-        $categorias = Documento::select('categoria')->distinct()->pluck('categoria');
-
-    // Se a rota atual estiver no prefixo 'admin', retorna a view do admin
+        // Se a rota atual estiver no prefixo 'admin', retorna a view do admin
         $route = request()->route();
         $prefix = $route ? $route->getPrefix() : null;
         if ($prefix && str_starts_with(trim($prefix, '/'), 'admin')) {
-            return view('admin.documentos.index', compact('documentos', 'tipo'));
+            return view('admin.documentos.index', compact('documentos'));
         }
 
-        return view('documentos.index', compact('documentos', 'categorias', 'tipo'));
+        return view('documentos.index', compact('documentos'));
     }
 
     /**
@@ -72,10 +56,9 @@ class DocumentoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'descricao' => 'required|string',
-            'categoria' => 'required|string|max:100',
-            'tipo' => 'required|in:receita,despesa',
-            'valor' => 'required|numeric|min:0',
-            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240', // Máx 10MB
+            'ata_diretoria' => 'nullable|string|max:255',
+            'cnpj' => 'nullable|string|max:18',
+            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
         ]);
 
         $path = $request->file('arquivo')->store('documentos', 'public');
@@ -83,10 +66,9 @@ class DocumentoController extends Controller
         Documento::create([
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
-            'categoria' => $request->categoria,
             'caminho_arquivo' => $path,
-            'tipo' => $request->tipo,
-            'valor' => $request->valor,
+            'ata_diretoria' => $request->ata_diretoria,
+            'cnpj' => $request->cnpj,
         ]);
 
         return redirect()->route('admin.documentos.index')->with('success', 'Documento enviado com sucesso.');
@@ -108,12 +90,11 @@ class DocumentoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'descricao' => 'required|string',
-            'categoria' => 'required|string|max:100',
-            'tipo' => 'required|in:receita,despesa',
-            'valor' => 'required|numeric|min:0',
+            'ata_diretoria' => 'nullable|string|max:255',
+            'cnpj' => 'nullable|string|max:18',
         ]);
 
-        $documento->update($request->only(['titulo', 'descricao', 'categoria', 'tipo', 'valor']));
+        $documento->update($request->only(['titulo', 'descricao', 'ata_diretoria', 'cnpj']));
 
         return redirect()->route('admin.documentos.index')->with('success', 'Documento atualizado com sucesso.');
     }

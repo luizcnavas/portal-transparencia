@@ -17,23 +17,15 @@
                     <label for="descricao" class="form-label">Descrição</label>
                     <textarea class="form-control" id="descricao" name="descricao" rows="3" required>{{ $documento->descricao }}</textarea>
                 </div>
+
                 <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoria</label>
-                    <input type="text" class="form-control" id="categoria" name="categoria" value="{{ $documento->categoria }}" required>
+                    <label for="ata_diretoria" class="form-label">Ata de Diretoria</label>
+                    <input type="text" class="form-control" id="ata_diretoria" name="ata_diretoria" value="{{ $documento->ata_diretoria }}">
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="tipo" class="form-label">Tipo</label>
-                        <select class="form-select" id="tipo" name="tipo" required>
-                            <option value="receita" {{ $documento->tipo == 'receita' ? 'selected' : '' }}>Receita</option>
-                            <option value="despesa" {{ $documento->tipo == 'despesa' ? 'selected' : '' }}>Despesa</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="valor" class="form-label">Valor (R$)</label>
-                        <input type="number" class="form-control" id="valor" name="valor" value="{{ $documento->valor }}" step="0.01" min="0" required>
-                    </div>
+                <div class="mb-3">
+                    <label for="cnpj" class="form-label">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ $documento->cnpj }}" placeholder="00.000.000/0000-00">
                 </div>
 
                 <p class="text-muted">A troca de arquivo não é permitida. Para alterar o arquivo, exclua este documento e crie um novo.</p>
