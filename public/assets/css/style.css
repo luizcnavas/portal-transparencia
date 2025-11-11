@@ -1,9 +1,9 @@
 body{
     font-size: 14px;
-    background-color: #c5ffc7;
+    background-color: #f0f0f0;
 }
 .footer{
-    background-color: #c5ffc7 !important;
+    background-color: #f0f0f0 !important;
     border-top: 10px;
     border-color: #20752b;
 }
@@ -35,7 +35,7 @@ body{
     padding: 0.6rem;
 }
 .tituloHome{
-    background-color: #c5ffc7;
+    background-color: #f0f0f0;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -61,12 +61,14 @@ body{
     width: 100%;
 }
 .btnHome {
-    background-color: #c5ffc7;
+    background-color: #f0f0f0;
     border-radius: 50%;
     object-fit: contain;
     margin: 2rem;
 }
-.btnCarteira, .btnFinanceiro, .btnPessoal, .btnLeg, .btnReceita, .btnInfo{
+.btnCarteira, .btnFinanceiro, .btnPessoal,
+.btnLeg, .btnReceitas, .btnInfo, 
+.btnDocs, .btnNoticias, .btnDespesas{
     width: 7rem;
     height: 7rem;
     object-fit: fill;
@@ -100,3 +102,127 @@ body{
     color: rgb(135, 131, 131);
     font-size: 1.2rem;
 }
+.infoOrg{
+    background-color: #f0f0f0 !important;
+    border: 0;
+    box-shadow: none;
+}
+/* === RESPONSIVIDADE GERAL === */
+@media (max-width: 1024px) {
+    .itemMenu {
+        font-size: 1rem;
+        padding-top: 1.5rem;
+    }
+
+    .btnHome {
+        margin: 1.5rem;
+    }
+
+    .btnCarteira, .btnFinanceiro, .btnPessoal,
+    .btnLeg, .btnReceitas, .btnInfo, 
+    .btnDocs, .btnNoticias, .btnDespesas {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .txtbtn {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu {
+        height: auto;
+        text-align: center;
+    }
+
+    .logo {
+        width: 9rem;
+        height: auto;
+    }
+
+    .TodosbtnsHome {
+        flex-wrap: wrap; /* quebra linha quando não couber */
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .btnHome {
+        margin: 1rem;
+    }
+
+    .btnCarteira, .btnFinanceiro, .btnPessoal,
+    .btnLeg, .btnReceitas, .btnInfo, 
+    .btnDocs, .btnNoticias, .btnDespesas {
+        width: 5.5rem;
+        height: 5.5rem;
+    }
+
+    .txtbtn {
+        font-size: 0.95rem;
+    }
+
+    .campoPesquisa {
+        width: 95%;
+        font-size: 1rem;
+    }
+
+    .subtit {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .TodosbtnsHome {
+       flex-wrap: wrap;
+       justify-content: center;
+       gap: 0.3rem; /* pode ajustar aqui */
+       flex-direction: row; /* mantém em linhas */
+    }
+
+    .btnHome {
+        flex: 1 1 20%; /* cada botão ocupa ~metade da linha */
+        max-width: 45%;
+        display: flex;
+        flex-direction: column; /* imagem em cima, texto embaixo */
+        align-items: center;    /* centraliza horizontalmente */
+        justify-content: center;/* centraliza verticalmente */
+        text-align: center;
+    }
+
+    .btnCarteira, .btnFinanceiro, .btnPessoal,
+    .btnLeg, .btnReceitas, .btnInfo, 
+    .btnDocs, .btnNoticias, .btnDespesas {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .txtbtn {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: 0.5rem; /* em vez de padding-top */
+        padding: 0;
+    }
+
+    .campoPesquisa {
+        width: 90%;
+        font-size: 0.9rem;
+    }
+
+    .itemMenu {
+        font-size: 0.95rem;
+        padding-top: 1rem;
+        width: 100%;
+    }
+}
+.card.fundoDesp {
+  background-image: url('/assets/img/imgDespesas.png') !important;
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+}
+
+

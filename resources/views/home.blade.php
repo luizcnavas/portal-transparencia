@@ -23,23 +23,27 @@
 <!-- Botões de Navegação -->
 <div class="TodosbtnsHome">
     <div class="btnHome" data-section="documentos">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoa.png') }}" alt="Documentos"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnDocs" src="{{ asset('assets/img/botoes/btnInformacoes.png') }}" alt="Documentos"/></a>
         <p class="txtbtn">Documentos</p>
     </div>
     <div class="btnHome" data-section="financeiro">
-        <a href="{{ route('financeiros.index') }}" type="button"><img class="btnFinanceiro" src="{{ asset('assets/img/botoes/btnFinanceiro.png') }}" alt="Financeiro"/></a>
+        <a href="{{ route('financeiros.index') }}" type="button"><img class="btnFinanceiro" src="{{ asset('assets/img/botoes/btnFinanceiros.png') }}" alt="Financeiro"/></a>
         <p class="txtbtn">Financeiro</p>
     </div>
+    <div class="btnHome" data-section="documentos">
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoal.png') }}" alt="Pessoal"/></a>
+        <p class="txtbtn">Pessoal</p>
+    </div>
     <div class="btnHome" data-section="legislacao">
-        <a href="{{ route('legislacoes.index') }}" type="button"><img class="btnLeg" src="{{ asset('assets/img/botoes/btnLegislacao.png') }}" alt="Legislação"/></a>
+        <a href="{{ route('legislacoes.index') }}" type="button"><img class="btnLeg" src="{{ asset('assets/img/botoes/btnLegislacoes.png') }}" alt="Legislação"/></a>
         <p class="txtbtn">Legislação</p>
     </div>
     <div class="btnHome" data-section="informacoes">
-        <a href="{{ route('informacoes.index') }}" type="button"><img class="btnInfo" src="{{ asset('assets/img/botoes/btnInfo.png') }}" alt="Informações"/></a>
+        <a href="{{ route('informacoes.index') }}" type="button"><img class="btnInfo" src="{{ asset('assets/img/botoes/btnInformacoes.png') }}" alt="Informações"/></a>
         <p class="txtbtn">Informações</p>
     </div>
     <div class="btnHome" data-section="noticias">
-        <a href="{{ route('noticias.index') }}" type="button"><img class="btnReceita" src="{{ asset('assets/img/botoes/btnReceitas.png') }}" alt="Notícias"/></a>
+        <a href="{{ route('noticias.index') }}" type="button"><img class="btnNoticias" src="{{ asset('assets/img/botoes/btnInformacoes.png') }}" alt="Notícias"/></a>
         <p class="txtbtn">Notícias</p>
     </div>
 </div>
@@ -48,7 +52,7 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm infoOrg">
                 <div class="card-body p-4">
                     <h2 class="card-title text-center mb-4" style="color: #20752b;">Sobre Nossa Organização</h2>
                     <div class="row">
