@@ -45,6 +45,13 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/transacoes', [TransacaoController::class, 'index'])->name('transacoes.index');
 Route::get('/transacoes/{transacao}', [TransacaoController::class, 'show'])->name('transacoes.show');
 
+//Pessoal
+Route::view('/pessoal', 'pessoal')->name('pessoal.index');
+
+//Créditos
+Route::view('/creditos', 'creditos')->name('creditos.index');
+
+
 // Rotas de autenticação (login/logout)
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

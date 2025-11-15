@@ -81,8 +81,9 @@
     </main>
 
     <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            <span class="text-muted">© 2025 AEAPS. Todos os direitos reservados.</span>
+        <div class="container text-center rodape">
+            <span class="text-muted">© 2025 AEAPS. Todos os direitos reservados. - </span>
+            <a class="nav-link"  href="{{ route('creditos.index') }}" style="color: blue; text-decoration: underline;" >Créditos</a>
         </div>
     </footer>
 

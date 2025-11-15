@@ -2,11 +2,20 @@ body{
     font-size: 14px;
     background-color: #f0f0f0;
 }
+/*rodapé*/
 .footer{
     background-color: #f0f0f0 !important;
     border-top: 10px;
     border-color: #20752b;
 }
+.rodape {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/*menu*/
 .menu {
     background-color: #20752b; 
     color: #fff;
@@ -34,6 +43,8 @@ body{
     font-size: 1.2rem;
     padding: 0.6rem;
 }
+
+/*home*/
 .tituloHome{
     background-color: #f0f0f0;
     display: flex;
@@ -107,7 +118,7 @@ body{
     border: 0;
     box-shadow: none;
 }
-/* === RESPONSIVIDADE GERAL === */
+/* === RESPONSIVIDADE GERAL HOME === */
 @media (max-width: 1024px) {
     .itemMenu {
         font-size: 1rem;
@@ -218,11 +229,72 @@ body{
         width: 100%;
     }
 }
-.card.fundoDesp {
-  background-image: url('/assets/img/imgDespesas.png') !important;
-  background-size: cover;
-  background-position: center;
-  min-height: 200px;
+
+/*pessoal*/
+.tituloP, .tituloCred{
+    font-size: 2.3rem;
+    color: #20752b;
+    text-align: center;
+}
+.subtituloP{
+    font-size: 1.5rem;
+    text-align: center;
+}
+.pessoal{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+.sect{
+    margin: 1rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.fotoP{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #20752b;
+}
+.NomeP{
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 0.2rem !important;
+}
+.cargoP{
+    padding: 0;
 }
 
-
+/*Créditos*/
+.InfoCred{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.logoExt{
+    width: 25rem;
+    height: auto;
+}
+.apoio, .projeto, .professor, .integrantes{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.titInfo{
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+.informacao{
+    font-size: 1rem;
+}

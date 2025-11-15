@@ -31,7 +31,7 @@
         <p class="txtbtn">Financeiro</p>
     </div>
     <div class="btnHome" data-section="documentos">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoal.png') }}" alt="Pessoal"/></a>
+        <a href="{{ route('pessoal.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoal.png') }}" alt="Pessoal"/></a>
         <p class="txtbtn">Pessoal</p>
     </div>
     <div class="btnHome" data-section="legislacao">
