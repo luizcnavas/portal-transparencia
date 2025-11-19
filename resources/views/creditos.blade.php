@@ -20,7 +20,7 @@
         <p class="titInfo">Integrantes da equipe desenvolvedora:</p>
         <p class="informacao">Ana Victória Augusto de Souza</p>
         <p class="informacao">Eduarda Prado dos Santos</p>
-        <p class="informacao">Felipe Lelis Zancanella R. Queiroz</p>
+        <p class="informacao">Felipe Lelis Zancanella Rabello Queiroz</p>
         <p class="informacao">Gabriela dos Santos Dourado</p>
         <p class="informacao">Luiz Carlos Navas Junior</p>
         <p class="informacao">Maria Eduarda Martin Menao</p>
