@@ -10,6 +10,7 @@ use App\Http\Controllers\TransacaoController;
 use App\Http\Controllers\FinanceiroController;
 use App\Http\Controllers\LegislacaoController;
 use App\Http\Controllers\InformacaoController;
+use App\Http\Controllers\PessoalController;
 
 // Rotas públicas
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -46,7 +47,9 @@ Route::get('/transacoes', [TransacaoController::class, 'index'])->name('transaco
 Route::get('/transacoes/{transacao}', [TransacaoController::class, 'show'])->name('transacoes.show');
 
 //Pessoal
-Route::view('/pessoal', 'pessoal')->name('pessoal.index');
+Route::get('/pessoal', [PessoalController::class, 'index'])->name('pessoal.index');
+Route::get('/pessoal/{pessoa}', [PessoalController::class, 'show'])->name('pessoal.show');
+Route::get('/pessoal/{pessoa}/preview', [PessoalController::class, 'preview'])->name('pessoal.preview');
 
 //Créditos
 Route::view('/creditos', 'creditos')->name('creditos.index');
@@ -75,4 +78,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     // Notícias (CRUD completo no admin)
     Route::resource('noticias', NoticiaController::class);
+
+    // Pessoal (CRUD completo no admin)
+    Route::resource('pessoal', PessoalController::class);
 });

@@ -256,10 +256,19 @@ body{
     text-align: center;
 }
 .fotoP{
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     background-color: #20752b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+}
+.imgFotoP{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .NomeP{
     font-weight: bold;

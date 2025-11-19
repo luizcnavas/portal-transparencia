@@ -26,7 +26,7 @@
         <p class="informacao">Maria Eduarda Martin Menao</p>
         <p class="informacao">Pedro Parmegiani da Costa</p>
         <p class="informacao">Raissa Limeira Moreira Thome</p>
-        <p class="informacao">Rebeca Gonçalves A. dos Santos</p>
+        <p class="informacao">Rebeca Gonçalves Andrejevas dos Santos</p>
     </div>
     <div class="apoio">
         <p class="titInfo">Apoio</p>
