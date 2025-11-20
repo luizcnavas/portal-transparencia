@@ -9,6 +9,9 @@ class Legislacao extends Model
 {
     use HasFactory;
 
+    // Define o nome da tabela explicitamente para evitar problemas de pluralização
+    protected $table = 'legislacaos';
+
     protected $fillable = [
         'titulo',
         'descricao',
@@ -16,4 +19,13 @@ class Legislacao extends Model
         'certificado_nacional',
         'caminho_arquivo',
     ];
+    
+    /**
+     * Get the route key for the model.
+     * Corrige o problema do Laravel pluralizar incorretamente "legislacao" para "legislaco"
+     */
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }

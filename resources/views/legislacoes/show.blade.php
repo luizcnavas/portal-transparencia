@@ -28,8 +28,12 @@
 
             <div class="mt-4">
                 <a href="{{ route('legislacoes.download', $legislacao) }}" class="btn btn-success">Baixar Documento</a>
-                @if(Str::endsWith($legislacao->caminho_arquivo, '.pdf'))
-                    <a href="{{ route('legislacoes.preview', $legislacao) }}" class="btn btn-info">Visualizar PDF</a>
+                @php
+                    $extensao = strtolower(pathinfo($legislacao->caminho_arquivo, PATHINFO_EXTENSION));
+                    $podeVisualizar = in_array($extensao, ['pdf', 'png', 'jpg', 'jpeg']);
+                @endphp
+                @if($podeVisualizar)
+                    <a href="{{ route('legislacoes.preview', $legislacao) }}" class="btn btn-info">Visualizar Arquivo</a>
                 @endif
                 <a href="{{ route('legislacoes.index') }}" class="btn btn-secondary">Voltar</a>
             </div>

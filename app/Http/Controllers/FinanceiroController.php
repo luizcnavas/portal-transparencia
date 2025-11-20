@@ -81,12 +81,12 @@ class FinanceiroController extends Controller
             'tipo' => 'required|in:receita,despesa',
             'valor' => 'required|numeric|min:0',
             'planejamento_estrategico' => 'nullable|string',
-            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
+            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,png,jpg,jpeg|max:10240',
         ]);
 
         $path = $request->file('arquivo')->store('financeiros', 'public');
 
-        Financeiro::create([
+        $financeiro = Financeiro::create([
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
             'caminho_arquivo' => $path,
@@ -95,7 +95,7 @@ class FinanceiroController extends Controller
             'planejamento_estrategico' => $request->planejamento_estrategico,
         ]);
 
-        return redirect()->route('admin.financeiros.index')->with('success', 'Registro financeiro criado com sucesso.');
+        return redirect()->route('financeiros.index')->with('success', 'Registro financeiro criado com sucesso.');
     }
 
     /**
@@ -124,7 +124,7 @@ class FinanceiroController extends Controller
 
         $financeiro->update($request->only(['titulo', 'descricao', 'tipo', 'valor', 'planejamento_estrategico']));
 
-        return redirect()->route('admin.financeiros.index')->with('success', 'Registro financeiro atualizado com sucesso.');
+        return redirect()->route('financeiros.index')->with('success', 'Registro financeiro atualizado com sucesso.');
     }
 
     /**
@@ -135,10 +135,13 @@ class FinanceiroController extends Controller
      */
     public function destroy(Financeiro $financeiro)
     {
-        Storage::disk('public')->delete($financeiro->caminho_arquivo);
+        // Verifica se há um arquivo antes de tentar deletar
+        if ($financeiro->caminho_arquivo) {
+            Storage::disk('public')->delete($financeiro->caminho_arquivo);
+        }
         $financeiro->delete();
 
-        return redirect()->route('admin.financeiros.index')->with('success', 'Registro financeiro excluído com sucesso.');
+        return redirect()->route('financeiros.index')->with('success', 'Registro financeiro excluído com sucesso.');
     }
 
     /**
@@ -152,17 +155,21 @@ class FinanceiroController extends Controller
     /**
      * Exibe a pré-visualização do documento em uma nova aba.
      * 
-     * Disponível apenas para arquivos PDF. Retorna uma view com
-     * iframe apontando para o arquivo no storage público.
+     * Disponível para arquivos PDF e imagens. Retorna uma view com
+     * iframe ou imagem apontando para o arquivo no storage público.
      */
     public function preview(Financeiro $financeiro)
     {
-        if (!\Illuminate\Support\Str::endsWith($financeiro->caminho_arquivo, '.pdf')) {
-            return back()->with('error', 'A pré-visualização está disponível apenas para arquivos PDF.');
+        $extensao = strtolower(pathinfo($financeiro->caminho_arquivo, PATHINFO_EXTENSION));
+        $extensoesPermitidas = ['pdf', 'png', 'jpg', 'jpeg'];
+        
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            return back()->with('error', 'A pré-visualização está disponível apenas para arquivos PDF e imagens (PNG/JPG).');
         }
 
         $url = Storage::disk('public')->url($financeiro->caminho_arquivo);
+        $ehImagem = in_array($extensao, ['png', 'jpg', 'jpeg']);
 
-        return view('financeiros.preview', ['url' => $url, 'financeiro' => $financeiro]);
+        return view('financeiros.preview', ['url' => $url, 'financeiro' => $financeiro, 'ehImagem' => $ehImagem]);
     }
 }

@@ -58,12 +58,12 @@ class DocumentoController extends Controller
             'descricao' => 'required|string',
             'ata_diretoria' => 'nullable|string|max:255',
             'cnpj' => 'nullable|string|max:18',
-            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
+            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,png,jpg,jpeg|max:10240',
         ]);
 
         $path = $request->file('arquivo')->store('documentos', 'public');
 
-        Documento::create([
+        $documento = Documento::create([
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
             'caminho_arquivo' => $path,
@@ -71,7 +71,7 @@ class DocumentoController extends Controller
             'cnpj' => $request->cnpj,
         ]);
 
-        return redirect()->route('admin.documentos.index')->with('success', 'Documento enviado com sucesso.');
+        return redirect()->route('documentos.index')->with('success', 'Documento enviado com sucesso.');
     }
 
     /**
@@ -96,7 +96,7 @@ class DocumentoController extends Controller
 
         $documento->update($request->only(['titulo', 'descricao', 'ata_diretoria', 'cnpj']));
 
-        return redirect()->route('admin.documentos.index')->with('success', 'Documento atualizado com sucesso.');
+        return redirect()->route('documentos.index')->with('success', 'Documento atualizado com sucesso.');
     }
 
     /**
@@ -107,11 +107,13 @@ class DocumentoController extends Controller
     public function destroy(Documento $documento)
     {
     // Remove o arquivo do storage
-        Storage::disk('public')->delete($documento->caminho_arquivo);
+        if ($documento->caminho_arquivo) {
+            Storage::disk('public')->delete($documento->caminho_arquivo);
+        }
         
         $documento->delete();
 
-        return redirect()->route('admin.documentos.index')->with('success', 'Documento excluído com sucesso.');
+        return redirect()->route('documentos.index')->with('success', 'Documento excluído com sucesso.');
     }
 
     /**
@@ -123,19 +125,23 @@ class DocumentoController extends Controller
     }
 
     /**
-     * Exibe pré-visualização do documento quando for PDF.
+     * Exibe pré-visualização do documento quando for PDF ou imagem.
      *
-     * Valida a extensão e retorna a view com iframe apontando para a URL.
+     * Valida a extensão e retorna a view com iframe/imagem apontando para a URL.
      */
     public function preview(Documento $documento)
     {
-        if (!\Illuminate\Support\Str::endsWith($documento->caminho_arquivo, '.pdf')) {
-            return back()->with('error', 'A pré-visualização está disponível apenas para arquivos PDF.');
+        $extensao = strtolower(pathinfo($documento->caminho_arquivo, PATHINFO_EXTENSION));
+        $extensoesPermitidas = ['pdf', 'png', 'jpg', 'jpeg'];
+        
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            return back()->with('error', 'A pré-visualização está disponível apenas para arquivos PDF e imagens (PNG/JPG).');
         }
 
-        $url = \Illuminate\Support\Facades\Storage::disk('public')->url($documento->caminho_arquivo);
+        $url = Storage::disk('public')->url($documento->caminho_arquivo);
+        $ehImagem = in_array($extensao, ['png', 'jpg', 'jpeg']);
 
-        return view('documentos.preview', ['url' => $url, 'documento' => $documento]);
+        return view('documentos.preview', ['url' => $url, 'documento' => $documento, 'ehImagem' => $ehImagem]);
     }
 
     /**

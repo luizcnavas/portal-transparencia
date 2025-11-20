@@ -8,6 +8,12 @@
         @endauth
     </div>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="card mb-4">
         <div class="card-body">
             <form method="GET" action="{{ route('financeiros.index') }}">

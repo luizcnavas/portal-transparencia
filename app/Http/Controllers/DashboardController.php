@@ -2,26 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transacao; // Changed from Documento
-use App\Models\Documento;
+use App\Models\Financeiro;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-    // Anotação: agregamos valores de `Transacao` e `Documento` para os totais
-    // exibidos no painel administrativo (receitas, despesas e saldo).
-    $transacoesReceitas = Transacao::where('tipo', 'receita')->sum('valor');
-    $transacoesDespesas = Transacao::where('tipo', 'despesa')->sum('valor');
+        // Busca os dados financeiros da tabela Financeiro
+        $totalReceitas = Financeiro::where('tipo', 'receita')->sum('valor');
+        $totalDespesas = Financeiro::where('tipo', 'despesa')->sum('valor');
+        $saldo = $totalReceitas - $totalDespesas;
 
-    $documentosReceitas = Documento::where('tipo', 'receita')->sum('valor');
-    $documentosDespesas = Documento::where('tipo', 'despesa')->sum('valor');
-
-    $totalReceitas = $transacoesReceitas + $documentosReceitas;
-    $totalDespesas = $transacoesDespesas + $documentosDespesas;
-    $saldo = $totalReceitas - $totalDespesas;
-
-        return view('admin.dashboard', compact('totalReceitas', 'totalDespesas', 'saldo'));
+        return view('dashboard', compact('totalReceitas', 'totalDespesas', 'saldo'));
     }
 }

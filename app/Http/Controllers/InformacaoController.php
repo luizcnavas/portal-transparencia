@@ -59,7 +59,7 @@ class InformacaoController extends Controller
             'impacto_social' => 'nullable|string',
             'estrutura_administrativa' => 'nullable|string',
             'contatos' => 'nullable|string',
-            'documento' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
+            'documento' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,png,jpg,jpeg|max:10240',
         ]);
 
         $path = null;
@@ -67,7 +67,7 @@ class InformacaoController extends Controller
             $path = $request->file('documento')->store('informacoes', 'public');
         }
 
-        Informacao::create([
+        $informacao = Informacao::create([
             'titulo' => $request->titulo,
             'conteudo' => $request->conteudo,
             'informacoes_institucionais' => $request->informacoes_institucionais,
@@ -77,7 +77,7 @@ class InformacaoController extends Controller
             'caminho_documento' => $path,
         ]);
 
-        return redirect()->route('admin.informacoes.index')->with('success', 'Informação criada com sucesso.');
+        return redirect()->route('informacoes.index')->with('success', 'Informação criada com sucesso.');
     }
 
     /**
@@ -107,7 +107,7 @@ class InformacaoController extends Controller
 
         $informacao->update($request->only(['titulo', 'conteudo', 'informacoes_institucionais', 'impacto_social', 'estrutura_administrativa', 'contatos']));
 
-        return redirect()->route('admin.informacoes.index')->with('success', 'Informação atualizada com sucesso.');
+        return redirect()->route('informacoes.index')->with('success', 'Informação atualizada com sucesso.');
     }
 
     /**
@@ -116,14 +116,22 @@ class InformacaoController extends Controller
      * Verifica se há documento anexo e o remove antes de deletar
      * o registro do banco de dados.
      */
-    public function destroy(Informacao $informacao)
+    public function destroy($informaco)
     {
-        if ($informacao->caminho_documento) {
-            Storage::disk('public')->delete($informacao->caminho_documento);
-        }
-        $informacao->delete();
+        try {
+            // Busca o registro pelo ID (o parametro informaco é o ID)
+            $informacao = Informacao::findOrFail($informaco);
+            
+            if ($informacao->caminho_documento) {
+                Storage::disk('public')->delete($informacao->caminho_documento);
+            }
+            
+            $informacao->delete();
 
-        return redirect()->route('admin.informacoes.index')->with('success', 'Informação excluída com sucesso.');
+            return redirect()->route('informacoes.index')->with('success', 'Informação excluída com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->route('informacoes.index')->with('error', 'Erro ao excluir: ' . $e->getMessage());
+        }
     }
 
     /**

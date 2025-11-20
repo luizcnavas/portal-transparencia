@@ -56,12 +56,12 @@ class LegislacaoController extends Controller
             'descricao' => 'required|string',
             'estatuto_social' => 'nullable|string|max:255',
             'certificado_nacional' => 'nullable|string|max:255',
-            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
+            'arquivo' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,png,jpg,jpeg|max:10240',
         ]);
 
         $path = $request->file('arquivo')->store('legislacoes', 'public');
 
-        Legislacao::create([
+        $legislacao = Legislacao::create([
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
             'caminho_arquivo' => $path,
@@ -69,7 +69,7 @@ class LegislacaoController extends Controller
             'certificado_nacional' => $request->certificado_nacional,
         ]);
 
-        return redirect()->route('admin.legislacoes.index')->with('success', 'Legislação criada com sucesso.');
+        return redirect()->route('legislacoes.index')->with('success', 'Legislação criada com sucesso.');
     }
 
     /**
@@ -97,7 +97,7 @@ class LegislacaoController extends Controller
 
         $legislacao->update($request->only(['titulo', 'descricao', 'estatuto_social', 'certificado_nacional']));
 
-        return redirect()->route('admin.legislacoes.index')->with('success', 'Legislação atualizada com sucesso.');
+        return redirect()->route('legislacoes.index')->with('success', 'Legislação atualizada com sucesso.');
     }
 
     /**
@@ -106,12 +106,23 @@ class LegislacaoController extends Controller
      * Apaga primeiro o arquivo físico do disco público, depois
      * remove o registro do banco de dados.
      */
-    public function destroy(Legislacao $legislacao)
+    public function destroy($legislacao)
     {
-        Storage::disk('public')->delete($legislacao->caminho_arquivo);
-        $legislacao->delete();
+        try {
+            // Busca o registro pelo ID (o parametro legislacao é o ID)
+            $legislacao = Legislacao::findOrFail($legislacao);
+            
+            // Verifica se há um arquivo antes de tentar deletar
+            if ($legislacao->caminho_arquivo) {
+                Storage::disk('public')->delete($legislacao->caminho_arquivo);
+            }
+            
+            $legislacao->delete();
 
-        return redirect()->route('admin.legislacoes.index')->with('success', 'Legislação excluída com sucesso.');
+            return redirect()->route('legislacoes.index')->with('success', 'Legislação excluída com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->route('legislacoes.index')->with('error', 'Erro ao excluir: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -125,17 +136,21 @@ class LegislacaoController extends Controller
     /**
      * Exibe a pré-visualização do documento em uma nova aba.
      * 
-     * Disponível apenas para arquivos PDF. Retorna uma view com
-     * iframe apontando para o arquivo no storage público.
+     * Disponível para arquivos PDF e imagens. Retorna uma view com
+     * iframe ou imagem apontando para o arquivo no storage público.
      */
     public function preview(Legislacao $legislacao)
     {
-        if (!\Illuminate\Support\Str::endsWith($legislacao->caminho_arquivo, '.pdf')) {
-            return back()->with('error', 'A pré-visualização está disponível apenas para arquivos PDF.');
+        $extensao = strtolower(pathinfo($legislacao->caminho_arquivo, PATHINFO_EXTENSION));
+        $extensoesPermitidas = ['pdf', 'png', 'jpg', 'jpeg'];
+        
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            return back()->with('error', 'A pré-visualização está disponível apenas para arquivos PDF e imagens (PNG/JPG).');
         }
 
         $url = Storage::disk('public')->url($legislacao->caminho_arquivo);
+        $ehImagem = in_array($extensao, ['png', 'jpg', 'jpeg']);
 
-        return view('legislacoes.preview', ['url' => $url, 'legislacao' => $legislacao]);
+        return view('legislacoes.preview', ['url' => $url, 'legislacao' => $legislacao, 'ehImagem' => $ehImagem]);
     }
 }

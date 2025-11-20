@@ -9,6 +9,9 @@ class Informacao extends Model
 {
     use HasFactory;
 
+    // Define o nome da tabela explicitamente para evitar problemas de pluralização
+    protected $table = 'informacaos';
+
     protected $fillable = [
         'titulo',
         'conteudo',
@@ -18,4 +21,13 @@ class Informacao extends Model
         'contatos',
         'caminho_documento',
     ];
+    
+    /**
+     * Get the route key for the model.
+     * Corrige o problema do Laravel pluralizar incorretamente "informacao" para "informaco"
+     */
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }

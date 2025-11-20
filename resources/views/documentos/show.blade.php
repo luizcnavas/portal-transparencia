@@ -29,7 +29,11 @@
 
             <hr>
             <h4>Arquivo</h4>
-            @if (\Illuminate\Support\Str::endsWith($documento->caminho_arquivo, '.pdf'))
+            @php
+                $extensao = strtolower(pathinfo($documento->caminho_arquivo, PATHINFO_EXTENSION));
+                $podeVisualizar = in_array($extensao, ['pdf', 'png', 'jpg', 'jpeg']);
+            @endphp
+            @if ($podeVisualizar)
                 <a href="{{ route('documentos.preview', $documento) }}" class="btn btn-info me-1" target="_blank">Visualizar Arquivo</a>
             @endif
             <a href="{{ route('documentos.download', $documento) }}" class="btn btn-success">Baixar Arquivo</a>

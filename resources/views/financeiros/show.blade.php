@@ -38,8 +38,12 @@
 
             <div class="mt-4">
                 <a href="{{ route('financeiros.download', $financeiro) }}" class="btn btn-success">Baixar Documento</a>
-                @if(Str::endsWith($financeiro->caminho_arquivo, '.pdf'))
-                    <a href="{{ route('financeiros.preview', $financeiro) }}" class="btn btn-info">Visualizar PDF</a>
+                @php
+                    $extensao = strtolower(pathinfo($financeiro->caminho_arquivo, PATHINFO_EXTENSION));
+                    $podeVisualizar = in_array($extensao, ['pdf', 'png', 'jpg', 'jpeg']);
+                @endphp
+                @if($podeVisualizar)
+                    <a href="{{ route('financeiros.preview', $financeiro) }}" class="btn btn-info">Visualizar Arquivo</a>
                 @endif
                 <a href="{{ route('financeiros.index') }}" class="btn btn-secondary">Voltar</a>
             </div>

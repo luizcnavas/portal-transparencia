@@ -21,25 +21,59 @@
             </div> 
         </div> 
         <div class="col-md-4"> 
-            <div class="card text-white {{ $balanco >= 0 ? 'bg-primary' : 'bg-warning' }} mb-3 fundoSaldo"> 
+            <div class="card text-white bg-primary mb-3 fundoSaldo"> 
                 <div class="card-header">Balanço Final</div> 
                 <div class="card-body"> 
-                    <h5 class="card-title">R$ {{ number_format($balanco, 2, ',', '.') }}</h5> 
+                    <h5 class="card-title">R$ {{ number_format($saldo, 2, ',', '.') }}</h5> 
                 </div> 
             </div> 
         </div> 
     </div>
 
-    {{-- Placeholder for charts --}}
+    {{-- Gráfico financeiro: representação visual de receitas vs despesas --}}
     <div class="row mt-5">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Gráficos</div>
-                <div class="card-body" style="height: 300px;">
-                    <p class="text-center">Gráficos serão implementados aqui.</p>
-                </div>
-            </div>
+        <div class="col-md-6 offset-md-3">
+            <canvas id="financeChart"></canvas>
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('financeChart');
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Receitas', 'Despesas'],
+            datasets: [{
+                label: 'Valor em R$',
+                data: [{{ $totalReceitas }}, {{ $totalDespesas }}],
+                backgroundColor: [
+                    'rgba(25, 135, 84, 0.7)',  // Verde para receitas
+                    'rgba(220, 53, 69, 0.7)'   // Vermelho para despesas
+                ],
+                borderColor: [
+                    'rgba(25, 135, 84, 1)',
+                    'rgba(220, 53, 69, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Distribuição de Receitas e Despesas'
+                }
+            }
+        }
+    });
+</script>
+@endpush
 @endsection
