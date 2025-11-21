@@ -23,27 +23,27 @@
 <!-- Botões de Navegação -->
 <div class="TodosbtnsHome">
     <div class="btnHome" data-section="documentos">
-        <a href="{{ route('documentos.index') }}" type="button"><img class="btnDocs" src="{{ asset('assets/img/botoes/btnInformacoes.png') }}" alt="Documentos"/></a>
+        <a href="{{ route('documentos.index') }}" type="button"><img class="btnDocs" src="{{ asset('assets/img/botoes/btnDoc.png') }}" alt="Documentos"/></a>
         <p class="txtbtn">Documentos</p>
     </div>
     <div class="btnHome" data-section="financeiro">
-        <a href="{{ route('financeiros.index') }}" type="button"><img class="btnFinanceiro" src="{{ asset('assets/img/botoes/btnFinanceiros.png') }}" alt="Financeiro"/></a>
+        <a href="{{ route('financeiros.index') }}" type="button"><img class="btnFinanceiro" src="{{ asset('assets/img/botoes/btnFinanceiro.png') }}" alt="Financeiro"/></a>
         <p class="txtbtn">Financeiro</p>
     </div>
     <div class="btnHome" data-section="documentos">
-        <a href="{{ route('pessoal.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoal.png') }}" alt="Pessoal"/></a>
+        <a href="{{ route('pessoal.index') }}" type="button"><img class="btnPessoal" src="{{ asset('assets/img/botoes/btnPessoa.png') }}" alt="Pessoal"/></a>
         <p class="txtbtn">Pessoal</p>
     </div>
     <div class="btnHome" data-section="legislacao">
-        <a href="{{ route('legislacoes.index') }}" type="button"><img class="btnLeg" src="{{ asset('assets/img/botoes/btnLegislacoes.png') }}" alt="Legislação"/></a>
+        <a href="{{ route('legislacoes.index') }}" type="button"><img class="btnLeg" src="{{ asset('assets/img/botoes/btnLegislacao.png') }}" alt="Legislação"/></a>
         <p class="txtbtn">Legislação</p>
     </div>
     <div class="btnHome" data-section="informacoes">
-        <a href="{{ route('informacoes.index') }}" type="button"><img class="btnInfo" src="{{ asset('assets/img/botoes/btnInformacoes.png') }}" alt="Informações"/></a>
+        <a href="{{ route('informacoes.index') }}" type="button"><img class="btnInfo" src="{{ asset('assets/img/botoes/btnInfo.png') }}" alt="Informações"/></a>
         <p class="txtbtn">Informações</p>
     </div>
     <div class="btnHome" data-section="noticias">
-        <a href="{{ route('noticias.index') }}" type="button"><img class="btnNoticias" src="{{ asset('assets/img/botoes/btnInformacoes.png') }}" alt="Notícias"/></a>
+        <a href="{{ route('noticias.index') }}" type="button"><img class="btnNoticias" src="{{ asset('assets/img/botoes/btnNoticia.png') }}" alt="Notícias"/></a>
         <p class="txtbtn">Notícias</p>
     </div>
 </div>
@@ -124,7 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'news': '{{ route("noticias.index") }}',
         'início': '{{ route("home") }}',
         'inicio': '{{ route("home") }}',
-        'home': '{{ route("home") }}'
+        'home': '{{ route("home") }}',
+        'pessoal': '{{ route("pessoal.index") }}',
+        'pessoa': '{{ route("pessoal.index") }}',
+        'diretoria': '{{ route("pessoal.index") }}',
+        'direção': '{{ route("pessoal.index") }}',
+        'direcao': '{{ route("pessoal.index") }}'
     };
     
     searchForm.addEventListener('submit', function(e) {
@@ -140,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Se não encontrar, vai para documentos por padrão
-        alert('Não encontramos resultados específicos. Tente: documentos, financeiro, legislação, informações ou notícias.');
+        alert('Não encontramos resultados específicos. Tente: documentos, financeiro, legislação, informações, pessoal ou notícias.');
     });
     
     // Enter para pesquisar

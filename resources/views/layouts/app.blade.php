@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portal da Transparência - AEAPS</title>
-    <link rel="shortcut icon" href="{{ asset('assets/img/AEAPS-Vetor-02.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/AEAPS - Vetor-02.png') }}" type="image/x-icon">
     <!-- Bootstrap 5 CSS (carregado via CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -28,7 +28,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light  menu">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}"><img class="logo" src="{{ asset('assets/img/LogoAEAPS-Branca.png') }}" alt="Logo AEAPS" /></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img class="logo" src="{{ asset('assets/img/LogoAEAPSBranca.png') }}" alt="Logo AEAPS" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

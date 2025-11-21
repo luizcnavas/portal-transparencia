@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Diretoria</h1>
-
+<h1 class="tituloP">Associação das Entidades Assistenciais e de Promoção Social de Bauru e Região</h1>
+<h3 class="subtituloP">Diretoria da Associação das Entidades Assistenciais e de Promoção Social de Bauru e Região - 2023 a 2025</h3>
+    <div class="d-flex align-items-center mb-4 caixaAdd">
         @auth
-            <a href="{{ route('admin.pessoal.create') }}" class="btn btn-primary">Adicionar Pessoa</a>
+            <a href="{{ route('admin.pessoal.create') }}" class="btn add">Adicionar Pessoa</a>
         @endauth
     </div>
 

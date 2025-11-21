@@ -243,32 +243,36 @@ body{
 .pessoal{
     display: flex;
     flex-wrap: wrap;
-    flex-flow: row;
     justify-content: center;
     align-items: center;
+    gap: 1.5rem;
 }
+
 .sect{
     margin: 1rem;
     display: flex;
     flex-flow: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 .fotoP{
-    width: 10rem;
-    height: 10rem;
+    width: 13rem;
+    height: 13rem;
     border-radius: 50%;
     background-color: #20752b;
     display: flex;
     align-items: center;
     justify-content: center;
-    object-fit: contain;
 }
 .imgFotoP{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%;
+    object-position: center;
+
 }
 .NomeP{
     font-weight: bold;
@@ -280,6 +284,15 @@ body{
 .cargoP{
     padding: 0;
 }
+.add{
+    background-color: #34a844;
+    color: #fff;
+}
+.caixaAdd{
+    display: flex;
+    justify-content: end;
+    padding: 1.3rem;
+}
 
 /*Créditos*/
 .InfoCred{
@@ -290,7 +303,7 @@ body{
     align-items: center;
 }
 .logoExt{
-    width: 25rem;
+    width: 23rem;
     height: auto;
 }
 .apoio, .projeto, .professor, .integrantes{
@@ -306,4 +319,68 @@ body{
 }
 .informacao{
     font-size: 1rem;
+}
+
+/* === RESPONSIVIDADE PESSOAL === */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .fotoP {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .NomeP {
+        font-size: 1.2rem;
+    }
+
+    .cargoP {
+        font-size: 1rem;
+    }
+}
+
+/* Celulares médios */
+@media (max-width: 768px) {
+    .pessoal {
+        gap: 1.5rem;
+    }
+
+    .fotoP {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .NomeP {
+        font-size: 1.1rem;
+    }
+    .tituloP{
+        font-size: 1.7rem;
+    }
+    .subtituloP{
+        font-size: 0.9rem;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    .pessoal {
+        gap: 1rem;
+    }
+
+    .sect {
+        width: 8rem;
+    }
+
+    .fotoP {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .NomeP {
+        font-size: 1rem;
+    }
+
+    .cargoP {
+        font-size: 0.9rem;
+    }
 }

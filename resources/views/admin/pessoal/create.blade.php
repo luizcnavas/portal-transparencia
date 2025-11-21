@@ -19,7 +19,8 @@
 
         <div class="mb-3">
             <label class="form-label">Foto</label>
-            <input type="file" name="foto" class="form-control" accept="image/*" required>
+            <input type="file" name="foto" class="form-control" accept="image/*">
+            <small class="text-muted">Campo opcional</small>
         </div>
 
         <button type="submit" class="btn btn-success">Salvar</button>

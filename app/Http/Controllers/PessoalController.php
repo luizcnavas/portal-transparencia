@@ -16,7 +16,7 @@ class PessoalController extends Controller
      */
     public function index(Request $request)
     {
-        $pessoal = Pessoal::latest()->paginate(10);
+        $pessoal = Pessoal::oldest()->paginate(10);
 
         // Se a rota atual estiver no prefixo 'admin', retorna a view do admin
         $route = request()->route();
@@ -58,8 +58,12 @@ class PessoalController extends Controller
             'cargo'=> 'required|string|max:255',
             'foto' => 'nullable|file|mimes:png,jpg,jpeg|max:10240',
         ]);
-
-        $path = $request->file('foto')->store('pessoal', 'public');
+        if ($request->hasFile('foto')) {
+            $path = $request->file('foto')->store('pessoal', 'public');
+        } else {
+            // Insere uma foto padrão no caso da ausência de uma.
+            $path = 'img/FotoVazia.jpg';
+        }
 
         Pessoal::create([
             'nome' => $request->nome,
