@@ -13,9 +13,12 @@
         @forelse($pessoal as $pessoa)
             <div class="sect">
                 <div class="fotoP">
-                    <img class="imgFotoP" src="{{ asset('storage/' . $pessoa->foto) }}" alt="{{ $pessoa->nome }}">
+                    @if (! $pessoa->foto || str_contains($pessoa->foto, 'FotoVazia'))
+                        <img class="imgFotoP" src="{{ asset('assets/img/FotoVazia.jpg') }}" alt="{{ $pessoa->nome }}">
+                    @else
+                        <img class="imgFotoP" src="{{ asset('storage/' . $pessoa->foto) }}" alt="{{ $pessoa->nome }}">
+                    @endif
                 </div>
-
                 <div class="infoP">
                     <p class="NomeP">{{ $pessoa->nome }}</p>
                     <span class="cargoP">{{ $pessoa->cargo }}</span>

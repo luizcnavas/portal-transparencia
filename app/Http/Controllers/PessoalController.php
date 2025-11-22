@@ -62,7 +62,7 @@ class PessoalController extends Controller
             $path = $request->file('foto')->store('pessoal', 'public');
         } else {
             // Insere uma foto padrão no caso da ausência de uma.
-            $path = 'img/FotoVazia.jpg';
+            $path = null;
         }
 
         Pessoal::create([
