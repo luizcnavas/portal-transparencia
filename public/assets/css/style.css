@@ -321,13 +321,16 @@ body{
     font-size: 1rem;
 }
 
-/* === RESPONSIVIDADE PESSOAL === */
+/* === RESPONSIVIDADE PESSOAL + Creditos === */
 
 /* Tablets */
 @media (max-width: 1024px) {
     .fotoP {
         width: 9rem;
         height: 9rem;
+    }
+    .logoExt{
+        width: 19rem;
     }
 
     .NomeP {
@@ -349,14 +352,22 @@ body{
         width: 8rem;
         height: 8rem;
     }
-
+    .logoExt{
+        width: 18rem;
+    }
     .NomeP {
         font-size: 1.1rem;
     }
-    .tituloP{
+    .tituloP, .tituloCred{
         font-size: 1.7rem;
     }
     .subtituloP{
+        font-size: 0.9rem;
+    }
+    .titInfo{
+        font-size: 1.2rem;
+    }
+    .informacao{
         font-size: 0.9rem;
     }
 }
@@ -375,6 +386,9 @@ body{
         width: 7rem;
         height: 7rem;
     }
+    .logoExt{
+        width: 17rem;
+    }
 
     .NomeP {
         font-size: 1rem;
@@ -383,4 +397,22 @@ body{
     .cargoP {
         font-size: 0.9rem;
     }
+}
+.bgFoto{
+    background-image: url(../img/FotoLogin.jpeg);
+    width: 100%;
+    height: 100%;
+}
+/*Documentos*/
+.voltaTab{
+    padding: 0;
+    border-radius: 15px;
+}
+.cabecalho{
+    background-color: #20752b !important;
+}
+.TituloTabela{
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
 }

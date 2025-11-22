@@ -1,4 +1,20 @@
 @extends('layouts.app')
+@push('styles')
+<style>
+    table.table thead.cabecalho th {
+        background-color: #20752b !important;
+        color: #fff !important;
+    }
+    table.table thead.cabecalho th:first-child {
+        border-top-left-radius: 8px;
+    }
+
+    table.table thead.cabecalho th:last-child {
+        border-top-right-radius: 8px;
+    }
+
+</style>
+@endpush
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -15,15 +31,15 @@
     @endif
 
     <div class="card">
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
+        <div class="voltaTab">
+            <table class="table table-hover tabela">
+                <thead class="cabecalho">
                     <tr>
-                        <th>Título</th>
-                        <th>Ata de Diretoria</th>
-                        <th>CNPJ</th>
-                        <th>Data de Publicação</th>
-                        <th class="text-end">Ação</th>
+                        <th class="TituloTabela">Título</th>
+                        <th class="TituloTabela">Ata de Diretoria</th>
+                        <th class="TituloTabela">CNPJ</th>
+                        <th class="TituloTabela">Data de Publicação</th>
+                        <th class="text-end TituloTabela">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
