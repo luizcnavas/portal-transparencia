@@ -1,9 +1,24 @@
 @extends('layouts.app')
+@push('styles')
+<style>
+    table.table thead.cabecalho th {
+        background-color: #20752b !important;
+        color: #fff !important;
+    }
+    table.table thead.cabecalho th:first-child {
+        border-top-left-radius: 8px;
+    }
 
+    table.table thead.cabecalho th:last-child {
+        border-top-right-radius: 8px;
+    }
+
+</style>
+@endpush
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Gerenciar Registros Financeiros</h1>
-        <a href="{{ route('admin.financeiros.create') }}" class="btn btn-primary">Adicionar Registro</a>
+        <h1 class="titulo">Gerenciar Registros Financeiros</h1>
+        <a href="{{ route('admin.financeiros.create') }}" class="btn btn-primary add">Adicionar Registro</a>
     </div>
 
     @if(session('success'))
@@ -13,15 +28,15 @@
     @endif
 
     <div class="card">
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
+        <div class="table-responsive voltaTab">
+            <table class="table table-hover tabela">
+                <thead class="cabecalho">
                     <tr>
-                        <th>Título</th>
-                        <th>Tipo</th>
-                        <th>Valor</th>
-                        <th>Data</th>
-                        <th class="text-end">Ações</th>
+                        <th class="TituloTabela">Título</th>
+                        <th class="TituloTabela">Tipo</th>
+                        <th class="TituloTabela">Valor</th>
+                        <th class="TituloTabela">Data</th>
+                        <th class="TituloTabelaAcao acaoFinanceiro">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,12 +52,12 @@
                             </td>
                             <td>R$ {{ number_format($financeiro->valor, 2, ',', '.') }}</td>
                             <td>{{ $financeiro->created_at->format('d/m/Y') }}</td>
-                            <td class="text-end">
-                                <a href="{{ route('admin.financeiros.edit', $financeiro) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <td class="text-end btnsTab">
+                                <a href="{{ route('admin.financeiros.edit', $financeiro) }}" class="btn btn-sm botaoTab"><img class="imgBtn" src="{{ asset('assets/img/botoes/paraTabelas/botao-editar.png') }}" alt="Editar"/></a>
                                 <form action="{{ route('admin.financeiros.destroy', $financeiro) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                                    <button type="submit" class="btn btn-sm botaoTab"><img class="imgBtn" src="{{ asset('assets/img/botoes/paraTabelas/excluir.png') }}" alt="Excluir"/></button>
                                 </form>
                             </td>
                         </tr>

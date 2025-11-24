@@ -18,9 +18,9 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Documentos</h1>
+        <h1 class="titulo">Documentos</h1>
         @auth
-            <a href="{{ route('admin.documentos.create') }}" class="btn btn-primary">Adicionar Documento</a>
+            <a href="{{ route('admin.documentos.create') }}" class="btn btn-primary add">Adicionar Documento</a>
         @endauth
     </div>
 
@@ -31,7 +31,7 @@
     @endif
 
     <div class="card">
-        <div class="voltaTab">
+        <div class="table-responsive voltaTab">
             <table class="table table-hover tabela">
                 <thead class="cabecalho">
                     <tr>
@@ -39,7 +39,7 @@
                         <th class="TituloTabela">Ata de Diretoria</th>
                         <th class="TituloTabela">CNPJ</th>
                         <th class="TituloTabela">Data de Publicação</th>
-                        <th class="text-end TituloTabela">Ação</th>
+                        <th class="TituloTabelaAcao">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,15 +49,15 @@
                             <td>{{ $documento->ata_diretoria ?? '—' }}</td>
                             <td>{{ $documento->cnpj ?? '—' }}</td>
                             <td>{{ $documento->created_at->format('d/m/Y') }}</td>
-                            <td class="text-end">
-                                <a href="{{ route('documentos.show', $documento) }}" class="btn btn-sm btn-info me-1">Detalhes</a>
-                                <a href="{{ route('documentos.download', $documento) }}" class="btn btn-sm btn-success">Baixar</a>
+                            <td class="text-end btnsTab">
+                                <a href="{{ route('documentos.show', $documento) }}" class="btn btn-sm me-1 botaoTab"><img class="imgBtn" src="{{ asset('assets/img/botoes/paraTabelas/olho.png') }}" alt="Detalhes"/></a>
+                                <a href="{{ route('documentos.download', $documento) }}" class="btn btn-sm botaoTab"><img class="imgBtn" src="{{ asset('assets/img/botoes/paraTabelas/download.png') }}" alt="Baixar"/></a>
                                 @auth
-                                    <a href="{{ route('admin.documentos.edit', $documento) }}" class="btn btn-sm btn-warning">Editar</a>
+                                    <a href="{{ route('admin.documentos.edit', $documento) }}" class="btn btn-sm botaoTab"><img class="imgBtn" src="{{ asset('assets/img/botoes/paraTabelas/botao-editar.png') }}" alt="Editar"/></a>
                                     <form action="{{ route('admin.documentos.destroy', $documento) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                                        <button type="submit" class="btn btn-sm botaoTab"><img class="imgBtn" src="{{ asset('assets/img/botoes/paraTabelas/excluir.png') }}" alt="Excluir"/></button>
                                     </form>
                                 @endauth
                             </td>

@@ -10,7 +10,8 @@ body{
 }
 .rodape {
     display: flex;
-    flex-flow: row;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
 }
@@ -287,6 +288,14 @@ body{
 .add{
     background-color: #34a844;
     color: #fff;
+    border-color: #20752b;
+}
+.add:hover{
+    background-color: #20752b;
+}
+.add:active{
+    background-color: #155d20 !important;
+    transform: scale(0.97);
 }
 .caixaAdd{
     display: flex;
@@ -403,16 +412,86 @@ body{
     width: 100%;
     height: 100%;
 }
-/*Documentos*/
+
+/*Tabelas*/
 .voltaTab{
     padding: 0;
     border-radius: 15px;
+    overflow-x: auto;
 }
 .cabecalho{
     background-color: #20752b !important;
 }
-.TituloTabela{
+.TituloTabela, .TituloTabelaAcao{
     font-size: 1.1rem;
     font-weight: bold;
     color: #fff;
+}
+.TituloTabelaAcao{
+    text-align: center;
+    padding-left: 5rem !important;
+}
+.acaoFinanceiro{
+    text-align: left !important;
+    padding-left: 5.5rem !important
+}
+.acaoLeg{
+    padding-left: 1rem !important;
+}
+.imgBtn{
+    width: 100%;
+    object-fit: contain;
+}
+.botaoTab{
+    width: 2.8rem;
+    min-width: 2.8rem;
+}
+.btnsTab{
+    gap: 0.3rem;
+    display: flex;
+    justify-content: end;
+    flex-wrap: nowrap;
+}
+@media (max-width: 576px) {
+    .TituloTabelaAcao {
+        padding-left: 0 !important;
+        text-align: center;
+    }
+    .acaoFinanceiro{
+        text-align: center;
+        padding-left: 0 !important
+    }
+    .acaoLeg{
+        padding-left: 0 !important;
+    }
+}
+/*Dashboard*/
+.card.bg-success {
+    background-image: url('../img/imgReceitas.png');
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 80%;
+}
+
+.card.bg-danger {
+    background-image: url('../img/imgDespesas.png');
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 80%;
+}
+
+.card.bg-primary {
+    background-image: url('../img/imgSaldo.png');
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 80%;
+}
+.numero{
+    text-align: center;
+    padding-left: 7rem;
+    padding-top: 1.5rem;
+    font-size: 1.4rem;
+}
+.dashFundo{
+    height: 7rem;
 }
