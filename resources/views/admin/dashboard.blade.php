@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Dashboard Financeiro</h1>
+    <h1 class="titulo">Dashboard Financeiro</h1>
     <p>Aqui está um resumo financeiro baseado nos documentos cadastrados no portal.</p>
     <hr>
 

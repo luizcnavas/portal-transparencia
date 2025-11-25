@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Notícias</h1>
+        <h1 class="titulo">Notícias</h1>
         @auth
-            <a href="{{ route('admin.noticias.create') }}" class="btn btn-primary">Adicionar Notícia</a>
+            <a href="{{ route('admin.noticias.create') }}" class="btn btn-primary add">Adicionar Notícia</a>
         @endauth
     </div>
 
     <div class="row">
         @forelse($noticias as $noticia)
-            <div class="col-md-12 mb-4">
+            <div class="@if($loop->first) col-md-12 destaque @else col-md-4 @endif mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">{{ $noticia->titulo }}</h2>

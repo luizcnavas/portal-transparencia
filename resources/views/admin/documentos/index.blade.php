@@ -21,25 +21,6 @@
         <a href="{{ route('admin.documentos.create') }}" class="btn btn-primary add">Adicionar Novo</a>
     </div>
 
-    <div class="card mb-3">
-        <div class="card-body">
-            <form method="GET" action="{{ route('admin.documentos.index') }}">
-                <div class="row g-2">
-                    <div class="col-md-3">
-                        <select name="tipo" class="form-select">
-                            <option value="">Todos os tipos</option>
-                            <option value="receita" {{ request('tipo') == 'receita' ? 'selected' : '' }}>Receita</option>
-                            <option value="despesa" {{ request('tipo') == 'despesa' ? 'selected' : '' }}>Despesa</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-outline-secondary">Filtrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

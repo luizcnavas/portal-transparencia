@@ -27,6 +27,28 @@
         </div>
     @endif
 
+    <div class="card mb-4 fundoCard">
+        <div class="filtro">
+            <form method="GET" action="{{ route('financeiros.index') }}">
+                <div class="row">
+                    <div class="col-md-4 respEspaco">
+                        <select name="tipo" class="form-select">
+                            <option value="">Todos os tipos</option>
+                            <option value="receita" {{ request('tipo') == 'receita' ? 'selected' : '' }}>Receita</option>
+                            <option value="despesa" {{ request('tipo') == 'despesa' ? 'selected' : '' }}>Despesa</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 respEspaco">
+                        <input type="text" name="search" class="form-control" placeholder="Pesquisar..." value="{{ request('search') }}">
+                    </div>
+                    <div class="col-md-2 respEspaco">
+                        <button type="submit" class="btn btn-secondary w-100 btnFiltro">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="card">
         <div class="table-responsive voltaTab">
             <table class="table table-hover tabela">

@@ -57,6 +57,7 @@ body{
 }
 .titulo{
     color: #20752b;
+
 }
 .txtbtn{
     color:#20752b;
@@ -285,15 +286,15 @@ body{
 .cargoP{
     padding: 0;
 }
-.add{
+.add, .btnFiltro{
     background-color: #34a844;
     color: #fff;
     border-color: #20752b;
 }
-.add:hover{
+.add:hover, .btnFiltro:hover{
     background-color: #20752b;
 }
-.add:active{
+.add:active, .btnFiltro:active{
     background-color: #155d20 !important;
     transform: scale(0.97);
 }
@@ -314,8 +315,9 @@ body{
 .logoExt{
     width: 23rem;
     height: auto;
+    padding-bottom: 1rem;
 }
-.apoio, .projeto, .professor, .integrantes{
+.apoio, .projeto, .professor, .integrantes, .Icones{
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -328,6 +330,14 @@ body{
 }
 .informacao{
     font-size: 1rem;
+}
+.infoLink{
+    color: #155d20;
+}
+.linha1{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.3rem;
 }
 
 /* === RESPONSIVIDADE PESSOAL + Creditos === */
@@ -379,6 +389,9 @@ body{
     .informacao{
         font-size: 0.9rem;
     }
+    .linha1{
+        gap: 0.2rem;
+    }
 }
 
 /* Celulares pequenos */
@@ -405,6 +418,9 @@ body{
 
     .cargoP {
         font-size: 0.9rem;
+    }
+    .linha1{
+        gap: 0.1rem;
     }
 }
 .bgFoto{
@@ -452,6 +468,19 @@ body{
     justify-content: end;
     flex-wrap: nowrap;
 }
+.fundoCard{
+    background-color: #20752b00 !important;
+    border: none !important;
+}
+.filtro{
+    border-top: 1px solid #155d20 ;
+    border-bottom: 1px solid #155d20;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.btnFiltro{
+    font-weight: bold;
+}
 @media (max-width: 576px) {
     .TituloTabelaAcao {
         padding-left: 0 !important;
@@ -463,6 +492,10 @@ body{
     }
     .acaoLeg{
         padding-left: 0 !important;
+    }
+    .respEspaco{
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
 }
 /*Dashboard*/
@@ -494,4 +527,50 @@ body{
 }
 .dashFundo{
     height: 7rem;
+}
+@media (max-width: 1024px) {
+    .numero{
+        font-size: 1rem;
+        padding-left: 7.3rem;
+        padding-top: 1.8rem;
+    }
+    .card.bg-success,.card.bg-danger,.card.bg-primary{
+        background-size: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .numero{
+        font-size: 1rem;
+        padding-left: 7rem;
+        padding-top: 1.5rem;
+    }
+    .card.bg-success,.card.bg-danger,.card.bg-primary{
+        background-size: 100%;
+    }
+}
+@media (max-width: 465px){
+    .numero{
+        font-size: 1.4rem;
+        padding-left: 7rem;
+        padding-top: 1.5rem;
+    }
+    .card.bg-success,.card.bg-danger,.card.bg-primary{
+        background-size: 80%;
+    }
+}
+/*Notícias e informações*/
+.destaque .card {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+}
+.destaqueInfo{
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+}
+.noticia-card {
+    height: 180px;
+    border-radius: 12px;
 }

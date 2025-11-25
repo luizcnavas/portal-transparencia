@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Gerenciar Notícias</h1>
-        <a href="{{ route('admin.noticias.create') }}" class="btn btn-primary">Adicionar Nova</a>
+        <h1 class="titulo">Gerenciar Notícias</h1>
+        <a href="{{ route('admin.noticias.create') }}" class="btn btn-primary add">Adicionar Nova</a>
     </div>
     {{-- Anotação: lista de notícias para administração; ações de CRUD disponíveis. --}}
 

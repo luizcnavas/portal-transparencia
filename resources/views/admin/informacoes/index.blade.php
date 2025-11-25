@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Gerenciar Informações</h1>
-        <a href="{{ route('admin.informacoes.create') }}" class="btn btn-primary">Adicionar Informação</a>
+        <h1 class="titulo">Gerenciar Informações</h1>
+        <a href="{{ route('admin.informacoes.create') }}" class="btn btn-primary add">Adicionar Informação</a>
     </div>
 
     @if(session('success'))

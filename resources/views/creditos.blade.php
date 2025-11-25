@@ -32,6 +32,19 @@
         <p class="titInfo">Apoio</p>
         <img class="logoExt" src="{{ asset('assets/img/coordenadoria-de-extensao.jpg') }}" alt="Logo Coordenadoria Extensão"/>
     </div>
+     <div class="Icones"> 
+        <p class="titInfo">Ícones utilizados no site</p>
+        <div class="linha1">
+            <p class="informacao">ícones feitos por</p>
+            <a class="informacao infoLink" href="https://www.freepik.com" title="Freepik"> Freepik </a> 
+            <p class="informacao">em</p> 
+            <a class="informacao infoLink" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
+        <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/eye" title="eye icons">Ícone de olho feito por Freepik - Flaticon</a>
+        <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/edit" title="edit icons">Ícone de edição feito por Kiranshastry - Flaticon</a>
+        <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/delete" title="delete icons">Ícone de excluir feito por Kiranshastry - Flaticon</a>
+        <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/download" title="download icons">Ícone de download feito por Debi Alpa Nugraha - Flaticon</a>
+    </div>
 </div>
 @endsection
 
