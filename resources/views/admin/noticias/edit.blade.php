@@ -17,7 +17,7 @@
                     <label for="conteudo" class="form-label">Conteúdo</label>
                     <textarea class="form-control" id="conteudo" name="conteudo" rows="10" required>{{ $noticia->conteudo }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <button type="submit" class="btn add">Salvar Alterações</button>
                 <a href="{{ route('admin.noticias.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

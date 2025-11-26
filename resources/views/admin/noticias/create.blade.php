@@ -16,7 +16,7 @@
                     <label for="conteudo" class="form-label">Conteúdo</label>
                     <textarea class="form-control" id="conteudo" name="conteudo" rows="10" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn add">Salvar</button>
                 <a href="{{ route('admin.noticias.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

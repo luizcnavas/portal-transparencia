@@ -39,7 +39,7 @@
                         <th class="TituloTabela">Ata de Diretoria</th>
                         <th class="TituloTabela">CNPJ</th>
                         <th class="TituloTabela">Data de Publicação</th>
-                        <th class="TituloTabelaAcao">Ação</th>
+                        <th class="TituloTabelaAcao">Ações</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -51,7 +51,7 @@
                     <label for="arquivo" class="form-label">Arquivo</label>
                     <input class="form-control" type="file" id="arquivo" name="arquivo" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn add">Salvar</button>
                 <a href="{{ route('admin.financeiros.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

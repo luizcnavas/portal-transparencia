@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Adicionar Novo Documento</h1>
+    <h1 class="titulo">Adicionar Novo Documento</h1>
     {{-- Anotação: formulário simples para criar documento com metadados e upload de arquivo. --}}
 
     @if ($errors->any())
@@ -43,7 +43,7 @@
                     <label for="arquivo" class="form-label">Arquivo</label>
                     <input class="form-control" type="file" id="arquivo" name="arquivo" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn add">Salvar</button>
                 <a href="{{ route('admin.documentos.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

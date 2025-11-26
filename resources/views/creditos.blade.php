@@ -44,6 +44,7 @@
         <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/edit" title="edit icons">Ícone de edição feito por Kiranshastry - Flaticon</a>
         <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/delete" title="delete icons">Ícone de excluir feito por Kiranshastry - Flaticon</a>
         <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/download" title="download icons">Ícone de download feito por Debi Alpa Nugraha - Flaticon</a>
+        <a class="informacao infoLink" href="https://www.flaticon.com/free-icons/download" title="download icons">Ícone de download de documentos feito por Kiranshastry - Flaticon</a>
     </div>
 </div>
 @endsection

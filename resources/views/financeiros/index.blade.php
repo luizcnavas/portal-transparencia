@@ -61,7 +61,7 @@
                         <th class="TituloTabela">Valor</th>
                         <th class="TituloTabela">Planejamento Estratégico</th>
                         <th class="TituloTabela">Data de Publicação</th>
-                        <th class="TituloTabelaAcao acaoFinanceiro">Ação</th>
+                        <th class="TituloTabelaAcao acaoFinanceiro">Ações</th>
                     </tr>
                 </thead>
                 <tbody>

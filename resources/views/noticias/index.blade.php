@@ -15,7 +15,9 @@
                     <div class="card-body">
                         <h2 class="card-title tituloNoticia">{{ $noticia->titulo }}</h2>
                         <p class="card-text"><small class="text-muted dataNoticia">Publicado em {{ $noticia->created_at->format('d/m/Y') }}</small></p>
-                        <p class="card-text">{{ Str::limit($noticia->conteudo, 200) }}</p>
+                        <p class="card-text txtNoticia {{ $loop->first ? 'txtDestaque' : '' }}">
+                            {{ Str::limit($noticia->conteudo, $loop->first ? 700 : 200) }}
+                        </p>
                         <div class="btnNoticia">
                             <a href="{{ route('noticias.show', $noticia) }}" class="btn lerMais">Leia mais</a>
                             @auth

@@ -37,7 +37,7 @@
                     <input type="text" class="form-control" id="certificado_nacional" name="certificado_nacional" value="{{ $legislacao->certificado_nacional }}">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Atualizar</button>
+                <button type="submit" class="btn add">Atualizar</button>
                 <a href="{{ route('admin.legislacoes.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

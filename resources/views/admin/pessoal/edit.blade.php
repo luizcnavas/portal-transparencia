@@ -33,7 +33,7 @@
                     <input type="file" class="form-control mt-2" id="foto" name="foto">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <button type="submit" class="btn add">Salvar Alterações</button>
                 <a href="{{ route('admin.pessoal.index') }}" class="btn btn-secondary">Cancelar</a>
 
 @endsection

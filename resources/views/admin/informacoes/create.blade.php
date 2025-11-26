@@ -57,7 +57,7 @@
                     <small class="text-muted">Campo opcional - Anexe um documento relacionado se necessário</small>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn add">Salvar</button>
                 <a href="{{ route('admin.informacoes.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

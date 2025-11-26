@@ -293,10 +293,12 @@ body{
 }
 .add:hover, .btnFiltro:hover{
     background-color: #20752b;
+    color: #f0f0f0;
 }
 .add:active, .btnFiltro:active{
     background-color: #155d20 !important;
     transform: scale(0.97);
+    color: #f0f0f0;
 }
 .caixaAdd{
     display: flex;
@@ -454,9 +456,17 @@ body{
 .acaoLeg{
     padding-left: 1rem !important;
 }
+.acaoNoticia, .acaoInfo{
+    text-align: right !important;
+    padding-left: 0 !important;
+    padding-right: 3rem !important;
+}
 .imgBtn{
     width: 100%;
     object-fit: contain;
+}
+.imgBtnDoc{
+    width: 130%;
 }
 .botaoTab{
     width: 2.8rem;
@@ -570,9 +580,21 @@ body{
     background-position: center;
     border-radius: 15px;
 }
-.noticia-card {
-    height: 180px;
-    border-radius: 12px;
+.cardNoticia {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardNoticia:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgb(0 0 0 / 0.18);
+}
+
+.cardNoticia .card-body {
+    padding: 20px;
 }
 .tituloNoticia{
     font-size: 2rem;
@@ -612,4 +634,74 @@ body{
 .lerMais:active{
     background-color: #155d20 !important;
     transform: scale(0.97);
+}
+.txtNoticia{
+    padding-right: 10px;
+}
+.masonry {
+    column-count: 3;
+    column-gap: 1.5rem;
+}
+
+@media (max-width: 992px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    .masonry {
+        column-count: 1;
+    }
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+}
+
+.cardInfo {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardInfo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgb(0 0 0 / 0.18);
+}
+
+.cardInfo .card-body {
+    padding: 20px;
+}
+.txtDestaque {
+    display: -webkit-box;
+    -webkit-line-clamp: 12; /* ~700 caracteres */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+@media (max-width: 1024px){
+    .txtDestaque{
+        -webkit-line-clamp: 6;
+    }
+}
+/* Tablets */
+@media (max-width: 992px) {
+    .txtDestaque {
+        -webkit-line-clamp: 5;
+    }
+}
+.subtitulo1{
+    color:#20752b !important;
+}
+.subtitulo2{
+    color:#005f73 !important;
+}
+.subtitulo3{
+    color:#0a9396 !important;
+}
+.subtitulo4{
+    color:#444444 !important;
 }

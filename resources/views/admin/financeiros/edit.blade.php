@@ -46,7 +46,7 @@
                     <textarea class="form-control" id="planejamento_estrategico" name="planejamento_estrategico" rows="4">{{ $financeiro->planejamento_estrategico }}</textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Atualizar</button>
+                <button type="submit" class="btn add">Atualizar</button>
                 <a href="{{ route('admin.financeiros.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

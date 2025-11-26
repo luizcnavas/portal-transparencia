@@ -44,7 +44,7 @@
                         <th class="TituloTabela">Estatuto Social</th>
                         <th class="TituloTabela">Certificado Nacional</th>
                         <th class="TituloTabela">Data de Publicação</th>
-                        <th class="TituloTabelaAcao acaoLeg">Ação</th>
+                        <th class="TituloTabelaAcao acaoLeg">Ações</th>
                     </tr>
                 </thead>
                 <tbody>

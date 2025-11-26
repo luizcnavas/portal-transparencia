@@ -48,7 +48,7 @@
                     <textarea class="form-control" id="contatos" name="contatos" rows="3">{{ $informacao->contatos }}</textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Atualizar</button>
+                <button type="submit" class="btn add">Atualizar</button>
                 <a href="{{ route('admin.informacoes.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

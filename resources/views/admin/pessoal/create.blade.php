@@ -23,7 +23,8 @@
             <small class="text-muted">Campo opcional</small>
         </div>
 
-        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="submit" class="btn add">Salvar</button>
+        <a href="{{ route('admin.pessoal.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Editar Documento</h1>
+    <h1 class="titulo">Editar Documento</h1>
     {{-- Anotação: edição apenas de metadados; o arquivo em si não é substituído aqui. --}}
 
     <div class="card">
@@ -29,7 +29,7 @@
                 </div>
 
                 <p class="text-muted">A troca de arquivo não é permitida. Para alterar o arquivo, exclua este documento e crie um novo.</p>
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <button type="submit" class="btn add">Salvar Alterações</button>
                 <a href="{{ route('admin.documentos.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
