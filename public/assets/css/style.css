@@ -561,7 +561,7 @@ body{
 /*Notícias e informações*/
 .destaque .card {
     height: 300px;
-    background-size: cover;
+    background-size: 90%;
     background-position: center;
     border-radius: 15px;
 }
@@ -573,4 +573,43 @@ body{
 .noticia-card {
     height: 180px;
     border-radius: 12px;
+}
+.tituloNoticia{
+    font-size: 2rem;
+    text-decoration: underline #20752b;
+}
+.dataNoticia{
+    color: #666666;
+}
+.btnNoticia{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+.cardNoticia .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardNoticia .btnNoticia {
+    margin-top: auto;
+    display: flex;
+}
+.btnNoticia .btnTab {
+    width: 3rem;
+}
+.lerMais{
+    background-color: #fff;
+    color: #155d20;
+    border-color: #20752b;
+    border-radius: 10px;
+}
+
+.lerMais:hover{
+    background-color: #20752b;
+    color: #fff;
+}
+.lerMais:active{
+    background-color: #155d20 !important;
+    transform: scale(0.97);
 }
