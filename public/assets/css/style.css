@@ -679,18 +679,21 @@ body{
 .txtDestaque {
     display: -webkit-box;
     -webkit-line-clamp: 12; /* ~700 caracteres */
+    line-clamp: 12;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 @media (max-width: 1024px){
     .txtDestaque{
         -webkit-line-clamp: 6;
+        line-clamp: 6;
     }
 }
 /* Tablets */
 @media (max-width: 992px) {
     .txtDestaque {
         -webkit-line-clamp: 5;
+        line-clamp: 5;
     }
 }
 .subtitulo1{
