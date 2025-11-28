@@ -71,7 +71,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('financeiros', FinanceiroController::class);
 
     // Legislação (CRUD completo no admin)
-    Route::resource('legislacoes', LegislacaoController::class);
+    Route::resource('legislacoes', LegislacaoController::class)
+        ->parameters(['legislacoes' => 'legislacao']);
 
     // Informações (CRUD completo no admin)
     Route::resource('informacoes', InformacaoController::class)
