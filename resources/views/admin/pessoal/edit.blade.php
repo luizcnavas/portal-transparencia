@@ -46,7 +46,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Senha</label>
-                        <input type="password" name="password" class="form-control" placeholder="Deixe em branco para manter a atual" autocomplete="new-password">
+                        <input type="password" name="password" class="form-control" placeholder="Deixe em branco para manter a atual - min 6 caracteres" autocomplete="new-password">
                     </div>
                     <hr>
                 @endif
