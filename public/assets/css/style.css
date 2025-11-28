@@ -91,13 +91,16 @@ main {
     color: #e8ffe9 !important;
     font-size: 0.9rem;
 }
+.pesquisa{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 /* responsividade */
 @media (max-width: 768px) {
     .CaixaRodape {
         gap: 2rem;
     }
-
     .campoPesquisaR,
     .Busca {
         width: 100%;

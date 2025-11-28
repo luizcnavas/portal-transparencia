@@ -110,7 +110,7 @@
                     <p class="titRodape">O que você procura?</p>
                     <hr class="linhaR"/>
                     <p class="InfoR">Digite no campo o que busca</p>
-                    <form id="footerSearchForm" class="d-flex w-100">
+                    <form id="footerSearchForm" class="d-flex w-100 pesquisa">
                         <input type="text" id="footerSearchInput" placeholder="(Ex: documentos, financeiro, legislação...)" class="campoPesquisaR">
                         <button type="submit" class="Busca">Buscar</button>
                     </form>
