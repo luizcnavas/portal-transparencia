@@ -31,21 +31,28 @@ class AuthController extends Controller
 				$request->session()->regenerate();
 				return redirect()->intended('admin/dashboard');
 			}
-
-			// Garantia: criar admin padrão se solicitado e ainda não existir
-			$adminEmail = env('ADMIN_EMAIL', 'admin@example.com');
-			$adminPassword = env('ADMIN_PASSWORD', 'password');
-			
-			if ($login === $adminEmail && $password === $adminPassword) {
-				$user = \App\Models\User::firstOrCreate(
-					['email' => $adminEmail],
-					['name' => 'Admin', 'password' => Hash::make($adminPassword)]
-				);
-				Auth::login($user);
-				$request->session()->regenerate();
-				return redirect()->intended('admin/dashboard');
-			}
 		}
+
+        // 2) Fallback para admin (mesmo sem @)
+        $adminEmail = env('ADMIN_EMAIL', 'admin@example.com');
+        $adminPassword = env('ADMIN_PASSWORD', 'password');
+        
+        if ($login === $adminEmail && $password === $adminPassword) {
+            $user = \App\Models\User::firstOrCreate(
+                ['email' => $adminEmail],
+                ['name' => 'Admin', 'password' => Hash::make($adminPassword)]
+            );
+            
+            // Atualiza senha se necessário (caso tenha mudado no .env)
+            if (!Hash::check($adminPassword, $user->password)) {
+                $user->password = Hash::make($adminPassword);
+                $user->save();
+            }
+
+            Auth::login($user);
+            $request->session()->regenerate();
+            return redirect()->intended('admin/dashboard');
+        }
 
 		return back()->withErrors([
 			'login' => 'As credenciais fornecidas não correspondem aos nossos registros.',
