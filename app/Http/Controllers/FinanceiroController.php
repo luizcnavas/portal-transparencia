@@ -51,17 +51,13 @@ class FinanceiroController extends Controller
         return view('financeiros.index', compact('financeiros', 'tipo', 'search'));
     }
 
-    /**
-     * Exibe os detalhes de um registro financeiro específico.
-     */
+    
     public function show(Financeiro $financeiro)
     {
         return view('financeiros.show', compact('financeiro'));
     }
 
-    /**
-     * Exibe o formulário para criar um novo registro financeiro.
-     */
+    
     public function create()
     {
         return view('admin.financeiros.create');
@@ -98,9 +94,7 @@ class FinanceiroController extends Controller
         return redirect()->route('financeiros.index')->with('success', 'Registro financeiro criado com sucesso.');
     }
 
-    /**
-     * Exibe o formulário para editar um registro financeiro existente.
-     */
+    
     public function edit(Financeiro $financeiro)
     {
         return view('admin.financeiros.edit', compact('financeiro'));
@@ -144,9 +138,7 @@ class FinanceiroController extends Controller
         return redirect()->route('financeiros.index')->with('success', 'Registro financeiro excluído com sucesso.');
     }
 
-    /**
-     * Faz o download do arquivo associado ao registro financeiro.
-     */
+    
     public function download(Financeiro $financeiro)
     {
         return Storage::disk('public')->download($financeiro->caminho_arquivo);

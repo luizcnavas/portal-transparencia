@@ -33,6 +33,20 @@
                     <input type="file" class="form-control mt-2" id="foto" name="foto">
                 </div>
 
+                @if($isMainAdmin)
+                    <hr>
+                    <h4>Dados de Login</h4>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ $pessoal->user->email ?? '' }}" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Senha</label>
+                        <input type="password" name="password" class="form-control" placeholder="Deixe em branco para manter a atual" autocomplete="new-password">
+                    </div>
+                    <hr>
+                @endif
+
                 <button type="submit" class="btn add">Salvar Alterações</button>
                 <a href="{{ route('admin.pessoal.index') }}" class="btn btn-secondary">Cancelar</a>
 

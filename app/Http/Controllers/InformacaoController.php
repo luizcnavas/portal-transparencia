@@ -27,17 +27,13 @@ class InformacaoController extends Controller
         return view('informacoes.index', compact('informacoes'));
     }
 
-    /**
-     * Exibe os detalhes de uma informação institucional específica.
-     */
+    
     public function show(Informacao $informacao)
     {
         return view('informacoes.show', compact('informacao'));
     }
 
-    /**
-     * Exibe o formulário para criar uma nova informação institucional.
-     */
+    
     public function create()
     {
         return view('admin.informacoes.create');
@@ -80,9 +76,7 @@ class InformacaoController extends Controller
         return redirect()->route('informacoes.index')->with('success', 'Informação criada com sucesso.');
     }
 
-    /**
-     * Exibe o formulário para editar uma informação institucional existente.
-     */
+    
     public function edit(Informacao $informacao)
     {
         return view('admin.informacoes.edit', compact('informacao'));

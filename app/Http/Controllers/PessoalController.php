@@ -5,15 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Pessoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class PessoalController extends Controller
 {
-    /**
-     * Lista documentos públicos com paginação.
-     *
-     * Quando a rota pertence ao prefixo 'admin', retorna a view
-     * administrativa com opções de CRUD.
-     */
     public function index(Request $request)
     {
         $pessoal = Pessoal::oldest()->paginate(10);
@@ -28,29 +25,17 @@ class PessoalController extends Controller
         return view('pessoal.index', compact('pessoal'));
     }
 
-    /**
-     * Mostra a página de detalhes de um documento.
-     *
-     * Recebe o documento via route-model binding e retorna a view.
-     */
     public function show(Pessoa $pessoa)
     {
         return view('pessoal.show', compact('pessoal'));
     }
 
-    /**
-     * Formulário de criação de documento (admin).
-     */
     public function create()
     {
-        return view('admin.pessoal.create');
+        $isMainAdmin = Auth::id() === 1;
+        return view('admin.pessoal.create', compact('isMainAdmin'));
     }
 
-    /**
-     * Valida os dados e armazena um novo documento (faz upload do arquivo).
-     *
-     * Verifica tipos e tamanho do arquivo, depois salva o caminho no storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -65,26 +50,37 @@ class PessoalController extends Controller
             $path = null;
         }
 
+        $userId = null;
+        if (Auth::id() === 1 && $request->filled('email') && $request->filled('password')) {
+             $request->validate([
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:6',
+            ]);
+
+            $user = User::create([
+                'name' => $request->nome,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+            $userId = $user->id;
+        }
+
         Pessoal::create([
             'nome' => $request->nome,
             'cargo' => $request->cargo,
             'foto' => $path,
+            'user_id' => $userId,
         ]);
 
         return redirect()->route('admin.pessoal.index')->with('success', 'Pessoa adicionada com sucesso.');
     }
 
-    /**
-     * Formulário de edição de metadados do documento (admin).
-     */
     public function edit(Pessoal $pessoal)
     {
-        return view('admin.pessoal.edit', compact('pessoal'));
+        $isMainAdmin = Auth::id() === 1;
+        return view('admin.pessoal.edit', compact('pessoal', 'isMainAdmin'));
     }
 
-    /**
-     * Atualiza os metadados do documento.
-     */
     public function update(Request $request, Pessoal $pessoal)
     {
         $request->validate([
@@ -95,14 +91,43 @@ class PessoalController extends Controller
 
         $pessoal->update($request->only(['nome','cargo','foto']));
 
+        if (Auth::id() === 1) {
+            if ($request->filled('email')) {
+                 $request->validate([
+                    'email' => 'required|email|unique:users,email,' . ($pessoal->user_id ?? 'NULL'),
+                ]);
+            }
+            
+            if ($request->filled('password')) {
+                $request->validate([
+                    'password' => 'min:6',
+                ]);
+            }
+
+            if ($request->filled('email') || $request->filled('password')) {
+                if ($pessoal->user) {
+                    $pessoal->user->update([
+                        'name' => $request->nome,
+                        'email' => $request->filled('email') ? $request->email : $pessoal->user->email,
+                        'password' => $request->filled('password') ? Hash::make($request->password) : $pessoal->user->password,
+                    ]);
+                } else {
+                    // Cria usuário se não existir mas os campos foram preenchidos
+                    if ($request->filled('email') && $request->filled('password')) {
+                         $user = User::create([
+                            'name' => $request->nome,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+                        ]);
+                        $pessoal->update(['user_id' => $user->id]);
+                    }
+                }
+            }
+        }
+
         return redirect()->route('admin.pessoal.index')->with('success', 'Pessoa atualizada com sucesso.');
     }
 
-    /**
-     * Remove o arquivo associado do storage e deleta o registro.
-     *
-     * Apaga o arquivo no disco público e remove o registro do banco.
-     */
     public function destroy(Pessoal $pessoal)
     {
     // Remove o arquivo do storage
@@ -112,13 +137,5 @@ class PessoalController extends Controller
 
         return redirect()->route('admin.pessoal.index')->with('success', 'Pessoa excluída com sucesso.');
     }
-
-
-    /**
-     * Lista os recursos para o admin.
-     *
-     * Ponto de entrada usado pela rota administrativa para exibir a
-     * listagem de documentos.
-     */
 
 }

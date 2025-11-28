@@ -22,6 +22,9 @@ O Portal de Transparência é uma aplicação web desenvolvida para facilitar a 
 - **Gestão Financeira**: Controle de receitas e despesas
 - **Gestão de Documentos**: Upload, visualização e download de documentos
 - **Gestão de Notícias**: Publicação e gerenciamento de notícias
+- **Gestão de Pessoal**: Cadastro de equipe e criação de logins de acesso
+- **Gestão de Legislação**: Publicação de leis e decretos
+- **Gestão de Informações**: Divulgação de informações institucionais
 - **Dashboard Administrativo**: Painel com estatísticas e totais
 - **Interface Responsiva**: Design moderno e adaptável
 
@@ -38,6 +41,9 @@ O Portal de Transparência é uma aplicação web desenvolvida para facilitar a 
 - CRUD completo de transações financeiras
 - CRUD completo de documentos
 - CRUD completo de notícias
+- CRUD completo de pessoal (com criação de usuários)
+- CRUD completo de legislação
+- CRUD completo de informações
 - Sistema de autenticação seguro
 
 ## Pré-requisitos
@@ -208,6 +214,9 @@ composer run dev
 - **transacoes**: Transações financeiras (receitas/despesas)
 - **documentos**: Documentos anexados
 - **noticias**: Notícias publicadas
+- **pessoals**: Quadro de pessoal e colaboradores
+- **legislacoes**: Leis e decretos
+- **informacoes**: Informações institucionais
 
 ### Relacionamentos
 
@@ -223,6 +232,8 @@ composer run dev
 2. **Transações**: Consulte receitas e despesas
 3. **Documentos**: Visualize e baixe documentos
 4. **Notícias**: Leia notícias publicadas
+5. **Legislação**: Consulte leis e decretos
+6. **Pessoal**: Conheça a equipe e colaboradores
 
 ### Acesso Administrativo
 
@@ -232,9 +243,7 @@ composer run dev
 
 ### Credenciais Padrão
 
-Após executar os seeders, use:
-- **Email**: admin@exemplo.com
-- **Senha**: password
+As credenciais de acesso administrativo estão disponíveis no **Manual do Usuário** (`manual/manual_usuario.md`).
 
 ## Troubleshooting
 
@@ -291,10 +300,8 @@ tail -f storage/logs/laravel.log
 
 Este projeto está pronto para deploy em serviços como Koyeb, Heroku, Railway, etc.
 
-📖 **Consulte os seguintes arquivos para deploy:**
-- `DEPLOY_KOYEB.md` - Guia completo de deploy no Koyeb
-- `CHECKLIST-DEPLOY.md` - Checklist passo a passo
-- `LEIA-ME-PRIMEIRO.md` - Instruções rápidas
+📖 **Consulte a documentação oficial do Laravel para deploy:**
+- [Laravel Deployment](https://laravel.com/docs/deployment)
 
 🔧 **Correções recentes:**
 - Adicionado middleware TrustProxies para funcionamento em proxies reversos

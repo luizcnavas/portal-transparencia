@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Transacao; // Changed from Documento;
+use App\Models\Transacao;
 use App\Models\Documento;
 
 class HomeController extends Controller

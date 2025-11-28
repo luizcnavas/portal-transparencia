@@ -25,6 +25,9 @@ APP_MAINTENANCE_STORE=database
 
 BCRYPT_ROUNDS=12
 
+ADMIN_EMAIL=admin
+ADMIN_PASSWORD=admin
+
 LOG_CHANNEL=stack
 LOG_STACK=single
 LOG_DEPRECATIONS_CHANNEL=null
@@ -88,14 +91,10 @@ php artisan db:seed
 
 ## 4. Credenciais de login
 
-Após executar os comandos acima, você pode fazer login com:
+As credenciais de login são configuradas através das variáveis de ambiente `ADMIN_EMAIL` e `ADMIN_PASSWORD` no arquivo `.env`.
 
-### Opção 1: Usuário criado pelo seeder
-- **Email:** admin@example.com
-- **Senha:** password
-
-### Opção 2: Fallback de desenvolvimento
-- **Login:** admin
+Por padrão (conforme `.env` acima):
+- **Email/Login:** admin
 - **Senha:** admin
 
 ## 5. Verificar se o banco de dados foi criado
@@ -146,11 +145,8 @@ Se o login funciona localmente mas não em produção:
 
 2. **Verifique se o TrustProxies está configurado**
    - O middleware já está incluído no projeto
-   - Consulte `DEPLOY_KOYEB.md` para instruções completas
 
 3. **Execute o script de verificação:**
    ```bash
    php check-env.php
    ```
-
-📖 **Para deploy em produção, consulte o arquivo `DEPLOY_KOYEB.md`**

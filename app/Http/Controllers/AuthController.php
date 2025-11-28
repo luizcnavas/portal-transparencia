@@ -8,23 +8,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-	/**
-	 * Mostra o formulário de login.
-	 */
+	
 	public function showLoginForm()
 	{
 		return view('auth.login');
 	}
 
-	/**
-	 * Trata tentativa de autenticação.
-	 *
-	 * Primeiro tenta autenticar por email+senha. Se falhar, mantém o
-	 * fallback de desenvolvimento (login:admin / password:admin) que
-	 * autentica o primeiro usuário disponível. Como garantia, se o
-	 * usuário informar admin@example.com/password e ele não existir,
-	 * é criado automaticamente.
-	 */
+	// Autenticação por email+senha com fallback para criação automática
 	public function login(Request $request)
 	{
 		$request->validate([
@@ -43,21 +33,14 @@ class AuthController extends Controller
 			}
 
 			// Garantia: criar admin padrão se solicitado e ainda não existir
-			if ($login === 'admin@example.com' && $password === 'password') {
+			$adminEmail = env('ADMIN_EMAIL', 'admin@example.com');
+			$adminPassword = env('ADMIN_PASSWORD', 'password');
+			
+			if ($login === $adminEmail && $password === $adminPassword) {
 				$user = \App\Models\User::firstOrCreate(
-					['email' => 'admin@example.com'],
-					['name' => 'Admin', 'password' => Hash::make('password')]
+					['email' => $adminEmail],
+					['name' => 'Admin', 'password' => Hash::make($adminPassword)]
 				);
-				Auth::login($user);
-				$request->session()->regenerate();
-				return redirect()->intended('admin/dashboard');
-			}
-		}
-
-		// 2) Fallback simplificado de desenvolvimento
-		if ($login === 'admin' && $password === 'admin') {
-			$user = \App\Models\User::first();
-			if ($user) {
 				Auth::login($user);
 				$request->session()->regenerate();
 				return redirect()->intended('admin/dashboard');
@@ -69,9 +52,7 @@ class AuthController extends Controller
 		])->withInput($request->only('login'));
 	}
 
-	/**
-	 * Faz logout do usuário.
-	 */
+	
 	public function logout(Request $request)
 	{
 		Auth::logout();

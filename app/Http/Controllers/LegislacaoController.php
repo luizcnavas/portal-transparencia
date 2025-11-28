@@ -27,17 +27,13 @@ class LegislacaoController extends Controller
         return view('legislacoes.index', compact('legislacoes'));
     }
 
-    /**
-     * Exibe os detalhes de um documento de legislação específico.
-     */
+    
     public function show(Legislacao $legislacao)
     {
         return view('legislacoes.show', compact('legislacao'));
     }
 
-    /**
-     * Exibe o formulário para criar um novo documento de legislação.
-     */
+    
     public function create()
     {
         return view('admin.legislacoes.create');
@@ -72,9 +68,7 @@ class LegislacaoController extends Controller
         return redirect()->route('legislacoes.index')->with('success', 'Legislação criada com sucesso.');
     }
 
-    /**
-     * Exibe o formulário para editar um documento de legislação existente.
-     */
+    
     public function edit(Legislacao $legislacao)
     {
         return view('admin.legislacoes.edit', compact('legislacao'));
@@ -125,9 +119,7 @@ class LegislacaoController extends Controller
         }
     }
 
-    /**
-     * Faz o download do arquivo associado ao documento de legislação.
-     */
+    
     public function download(Legislacao $legislacao)
     {
         return Storage::disk('public')->download($legislacao->caminho_arquivo);

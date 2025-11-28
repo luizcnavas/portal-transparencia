@@ -16,9 +16,8 @@ class MigrateDataToTransacoesSeeder extends Seeder
     public function run(): void
     {
         DB::transaction(function () {
-            // 1. Limpa a tabela transacoes para garantir idempotência
-            // Nota: este seeder depende das tabelas legadas 'despesas' e 'receitas'.
-            // Garanta que elas existam antes de rodar, caso contrário ocorrerá erro.
+            // Limpa a tabela transacoes
+            // Depende das tabelas legadas 'despesas' e 'receitas'
             Transacao::truncate();
 
             // 2. Migrar despesas

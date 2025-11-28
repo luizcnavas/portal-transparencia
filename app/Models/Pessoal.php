@@ -13,5 +13,11 @@ class Pessoal extends Model
         'nome',
         'cargo',
         'foto',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

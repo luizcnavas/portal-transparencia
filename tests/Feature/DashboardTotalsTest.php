@@ -28,8 +28,8 @@ class DashboardTotalsTest extends TestCase
         $this->actingAs($user)
             ->get(route('admin.dashboard'))
             ->assertStatus(200)
-            ->assertSeeText('R$ 150,00') // total receitas 100 + 50
-            ->assertSeeText('R$ 60,00')  // total despesas 40 + 20
-            ->assertSeeText('R$ 90,00'); // saldo 150 - 60 = 90
+            ->assertSeeText('R$ 150,00')
+            ->assertSeeText('R$ 60,00')
+            ->assertSeeText('R$ 90,00');
     }
 }

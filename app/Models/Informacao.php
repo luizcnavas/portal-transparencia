@@ -9,7 +9,7 @@ class Informacao extends Model
 {
     use HasFactory;
 
-    // Define o nome da tabela explicitamente para evitar problemas de pluralização
+    // Nome da tabela
     protected $table = 'informacaos';
 
     protected $fillable = [
