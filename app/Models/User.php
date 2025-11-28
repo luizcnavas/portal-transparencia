@@ -49,4 +49,25 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pessoal::class);
     }
+
+    /**
+     * Verifica se este usuário é o administrador principal configurado no .env
+     * 
+     * @return bool
+     */
+    public function isMainAdmin(): bool
+    {
+        return $this->email === env('ADMIN_EMAIL', 'admin@example.com');
+    }
+
+    /**
+     * Verifica se o usuário atualmente autenticado é o administrador principal
+     * 
+     * @return bool
+     */
+    public static function currentUserIsMainAdmin(): bool
+    {
+        $user = \Illuminate\Support\Facades\Auth::user();
+        return $user ? $user->isMainAdmin() : false;
+    }
 }

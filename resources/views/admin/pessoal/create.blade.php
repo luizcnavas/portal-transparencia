@@ -24,6 +24,10 @@
         </div>
 
         @if($isMainAdmin)
+            <div class="alert alert-info">
+                <strong>ℹ️ Permissões de Admin Principal</strong><br>
+                Apenas você, como administrador principal, pode criar credenciais de login para outros usuários.
+            </div>
             <hr>
             <h4>Dados de Login (Opcional)</h4>
             <div class="mb-3">

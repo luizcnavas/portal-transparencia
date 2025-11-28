@@ -125,6 +125,27 @@ O sistema de autenticação está configurado em:
 - **Rotas:** `routes/web.php`
 - **Seeder:** `database/seeders/DatabaseSeeder.php`
 
+## Sistema de Permissões
+
+### Administrador Principal
+
+O usuário definido nas variáveis `ADMIN_EMAIL` e `ADMIN_PASSWORD` no arquivo `.env` é considerado o **Administrador Principal** do sistema e possui permissões exclusivas.
+
+**Permissões exclusivas do Admin Principal:**
+- ✅ Criar e editar credenciais de login de outros usuários na seção "Pessoal"
+- ✅ Gerenciar todos os aspectos do sistema administrativo
+
+**Importante:** 
+- Outros usuários autenticados podem editar conteúdo (documentos, notícias, financeiro, etc.), mas **não podem criar ou modificar credenciais de login** de outros usuários.
+- O sistema identifica o admin principal pelo **email configurado no .env**, não pelo ID no banco de dados, tornando-o portável entre diferentes ambientes.
+
+**Como funciona:**
+1. O primeiro usuário criado via seeder usa `ADMIN_EMAIL` e `ADMIN_PASSWORD` do `.env`
+2. Este usuário pode criar outros usuários com login ao adicionar pessoas no menu "Pessoal"
+3. Apenas o email que corresponde ao `ADMIN_EMAIL` verá os campos de login ao criar/editar pessoas
+4. Usuários secundários podem fazer login e editar conteúdo, mas não gerenciar outros usuários
+
+
 ## Troubleshooting
 
 Se ainda estiver com problemas:

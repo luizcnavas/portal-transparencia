@@ -32,7 +32,7 @@ class PessoalController extends Controller
 
     public function create()
     {
-        $isMainAdmin = Auth::id() === 1;
+        $isMainAdmin = User::currentUserIsMainAdmin();
         return view('admin.pessoal.create', compact('isMainAdmin'));
     }
 
@@ -51,7 +51,7 @@ class PessoalController extends Controller
         }
 
         $userId = null;
-        if (Auth::id() === 1 && $request->filled('email') && $request->filled('password')) {
+        if (User::currentUserIsMainAdmin() && $request->filled('email') && $request->filled('password')) {
              $request->validate([
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:6',
@@ -77,7 +77,7 @@ class PessoalController extends Controller
 
     public function edit(Pessoal $pessoal)
     {
-        $isMainAdmin = Auth::id() === 1;
+        $isMainAdmin = User::currentUserIsMainAdmin();
         return view('admin.pessoal.edit', compact('pessoal', 'isMainAdmin'));
     }
 
@@ -91,7 +91,7 @@ class PessoalController extends Controller
 
         $pessoal->update($request->only(['nome','cargo','foto']));
 
-        if (Auth::id() === 1) {
+        if (User::currentUserIsMainAdmin()) {
             if ($request->filled('email')) {
                  $request->validate([
                     'email' => 'required|email|unique:users,email,' . ($pessoal->user_id ?? 'NULL'),
