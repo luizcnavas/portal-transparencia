@@ -97,8 +97,6 @@ Por padrão (conforme `.env` acima):
 - **Email/Login:** admin
 - **Senha:** admin
 
-Se desejar alterar as credenciais, edite o arquivo `.env` e altere as variáveis `ADMIN_EMAIL` e `ADMIN_PASSWORD`.
-
 ## 5. Verificar se o banco de dados foi criado
 
 O arquivo `database/database.sqlite` deve existir. Se não existir, crie-o:

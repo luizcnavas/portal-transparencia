@@ -110,8 +110,8 @@
                     <p class="titRodape">O que você procura?</p>
                     <hr class="linhaR"/>
                     <p class="InfoR">Digite no campo o que busca</p>
-                    <form id="searchForm" class="d-flex w-100">
-                        <input type="text" id="searchInput" placeholder="(Ex: documentos, financeiro, legislação...)" class="campoPesquisaR">
+                    <form id="footerSearchForm" class="d-flex w-100">
+                        <input type="text" id="footerSearchInput" placeholder="(Ex: documentos, financeiro, legislação...)" class="campoPesquisaR">
                         <button type="submit" class="Busca">Buscar</button>
                     </form>
                 </div>
@@ -124,6 +124,81 @@
     </footer>
         <!-- Bootstrap 5 JS (bundle com Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script de Busca do Rodapé -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const footerSearchInput = document.getElementById('footerSearchInput');
+        const footerSearchForm = document.getElementById('footerSearchForm');
+        
+        if (footerSearchForm && footerSearchInput) {
+            // Mapeamento de palavras-chave para rotas
+            const searchMap = {
+                'documentos': '{{ route("documentos.index") }}',
+                'documento': '{{ route("documentos.index") }}',
+                'financeiro': '{{ route("financeiros.index") }}',
+                'financeira': '{{ route("financeiros.index") }}',
+                'finanças': '{{ route("financeiros.index") }}',
+                'financas': '{{ route("financeiros.index") }}',
+                'receita': '{{ route("financeiros.index") }}',
+                'receitas': '{{ route("financeiros.index") }}',
+                'despesa': '{{ route("financeiros.index") }}',
+                'despesas': '{{ route("financeiros.index") }}',
+                'legislação': '{{ route("legislacoes.index") }}',
+                'legislacao': '{{ route("legislacoes.index") }}',
+                'lei': '{{ route("legislacoes.index") }}',
+                'leis': '{{ route("legislacoes.index") }}',
+                'informações': '{{ route("informacoes.index") }}',
+                'informacoes': '{{ route("informacoes.index") }}',
+                'informacao': '{{ route("informacoes.index") }}',
+                'contato': '{{ route("informacoes.index") }}',
+                'contatos': '{{ route("informacoes.index") }}',
+                'notícias': '{{ route("noticias.index") }}',
+                'noticias': '{{ route("noticias.index") }}',
+                'noticia': '{{ route("noticias.index") }}',
+                'news': '{{ route("noticias.index") }}',
+                'início': '{{ route("home") }}',
+                'inicio': '{{ route("home") }}',
+                'home': '{{ route("home") }}',
+                'pessoal': '{{ route("pessoal.index") }}',
+                'pessoa': '{{ route("pessoal.index") }}',
+                'diretoria': '{{ route("pessoal.index") }}',
+                'direção': '{{ route("pessoal.index") }}',
+                'direcao': '{{ route("pessoal.index") }}'
+            };
+            
+            footerSearchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchTerm = footerSearchInput.value.toLowerCase().trim();
+                
+                if (!searchTerm) {
+                    alert('Por favor, digite algo para buscar.');
+                    return;
+                }
+                
+                // Procura por correspondência exata ou parcial
+                for (const [key, url] of Object.entries(searchMap)) {
+                    if (searchTerm.includes(key) || key.includes(searchTerm)) {
+                        window.location.href = url;
+                        return;
+                    }
+                }
+                
+                // Se não encontrar, mostra alerta
+                alert('Não encontramos resultados específicos. Tente: documentos, financeiro, legislação, informações, pessoal ou notícias.');
+            });
+            
+            // Enter para pesquisar
+            footerSearchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    footerSearchForm.dispatchEvent(new Event('submit'));
+                }
+            });
+        }
+    });
+    </script>
+    
     @stack('scripts')
 </body>
 </html>

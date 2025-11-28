@@ -1,0 +1,54 @@
+# Documentação do Projeto
+
+**A) Nome do aplicativo:**
+Portal Transparência
+
+**B) Descrição do aplicativo:**
+O Portal Transparência é um sistema web desenvolvido para facilitar a gestão e a visualização pública de documentos, informações financeiras, legislação e notícias de uma entidade governamental ou organizacional. O sistema permite o cadastro e controle de documentos (PDFs), registros financeiros, leis e decretos, além de gerenciar o quadro de pessoal. Possui uma área administrativa segura para gerenciamento de conteúdo e uma interface pública acessível para consulta pelos cidadãos.
+
+**C) Nomes completos dos autores:**
+
+Ana Victória Augusto de Souza
+
+Eduarda Prado dos Santos
+
+Felipe Lelis Zancanella Rabello Queiroz
+
+Gabriela dos Santos Dourado
+
+Luiz Carlos Navas Junior
+
+Maria Eduarda Martin Menao
+
+Pedro Parmegiani da Costa
+
+Raissa Limeira Moreira Thome
+
+Rebeca Gonçalves Andrejevas dos Santos
+
+**D) Nome completo e titulação do professor orientador:**
+Prof. Dr. Elvio Gilberto da Silva
+
+**G) Palavras-chave:**
+Gestão Pública; Transparência; Laravel.
+
+**H) Resumo:**
+Este projeto consiste no desenvolvimento de um portal web para transparência pública, visando atender às exigências legais de divulgação de dados governamentais. O sistema centraliza informações sobre despesas, receitas, contratos, leis e quadro de pessoal em uma plataforma única e de fácil navegação. A solução foi construída com foco em segurança, usabilidade e desempenho, garantindo que a população tenha acesso rápido e claro às informações de interesse público.
+
+**I) Objetivos do aplicativo:**
+- Centralizar a divulgação de informações públicas obrigatórias por lei.
+- Facilitar o acesso do cidadão a documentos, contas públicas e legislação.
+- Prover uma ferramenta eficiente para a gestão interna de publicações oficiais.
+- Garantir a transparência e a prestação de contas da gestão pública.
+
+**J) Público-alvo:**
+Cidadãos em geral, órgãos de controle (Tribunais de Contas, Ministério Público), jornalistas e servidores públicos.
+
+**K) Faixa etária:**
+Livre (destinado a adultos e jovens interessados na gestão pública).
+
+**L) Tecnologias utilizadas:**
+- **Backend:** PHP 8.2+, Laravel 12.x (Framework MVC).
+- **Frontend:** Blade Templates, TailwindCSS 4.0, JavaScript.
+- **Banco de Dados:** MySQL / MariaDB.
+- **Ferramentas:** Vite (Build tool), Chart.js (Gráficos), Composer (Gerenciador de dependências PHP), NPM (Gerenciador de pacotes Node).
