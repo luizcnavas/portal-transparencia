@@ -85,12 +85,43 @@
     </main>
 
     <footer class="footer mt-auto py-3">
-        <div class="container text-center rodape">
-            <span class="text-muted">© 2025 AEAPS. Todos os direitos reservados. </span>
-            <a class="nav-link"  href="{{ route('creditos.index') }}" style="color: #20752b; text-decoration: underline;" >Créditos</a>
+        <div class="rodapeCompleto">
+            <div class="CaixaRodape">
+                <div class="contatoR">
+                    <p class="titRodape">Nosso Contato</p>
+                    <hr class="linhaR"/>
+                    <p class="subtitR">Endereço</p>
+                    <p class="InfoR">Rua Julio Prestes, 2-53, Centro - Bauru-SP</p>
+                    <p class="subtitR">Ligue para nós</p>
+                    <p class="InfoR">(14) 3879-4204</p>
+                    <p class="subtitR">Email</p>
+                    <p class="InfoR">contato@aeasp.org.br</p>
+                </div>
+                <div class="linksR">
+                    <p class="titRodape">Links Rápidos</p>
+                    <hr class="linhaR"/>
+                    <a class="linkRodape"  href="{{ route('home') }}">Início</a>
+                    <a class="linkRodape" href="{{ route('documentos.index') }}">Documentos</a>
+                    <a class="linkRodape" href="{{ route('financeiros.index') }}">Informações financeiras</a>
+                    <a class="linkRodape" href="{{ route('legislacoes.index') }}">Informações Legais</a>
+                    <a class="linkRodape" href="{{ route('noticias.index') }}">Notícias</a>
+                </div>
+                <div class="pesquisaR">
+                    <p class="titRodape">O que você procura?</p>
+                    <hr class="linhaR"/>
+                    <p class="InfoR">Digite no campo o que busca</p>
+                    <form id="searchForm" class="d-flex w-100">
+                        <input type="text" id="searchInput" placeholder="(Ex: documentos, financeiro, legislação...)" class="campoPesquisaR">
+                        <button type="submit" class="Busca">Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="container text-center rodapeIni">
+                <span class="text-muted direitosR">© 2025 AEAPS. Todos os direitos reservados. </span>
+                <a class="nav-link"  href="{{ route('creditos.index') }}" style="color: #adf3af; text-decoration: underline;" >Créditos</a>
+            </div>
         </div>
     </footer>
-
         <!-- Bootstrap 5 JS (bundle com Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
