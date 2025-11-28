@@ -8,63 +8,59 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-	
-	public function showLoginForm()
-	{
-		return view('auth.login');
-	}
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
 
-	// Autenticação por email+senha com fallback para criação automática
-	public function login(Request $request)
-	{
-		$request->validate([
-			'login' => ['required', 'string'],
-			'password' => ['required', 'string'],
-		]);
+    public function login(Request $request)
+    {
+        $request->validate([
+            'login' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ]);
 
-		$login = $request->input('login');
-		$password = $request->input('password');
+        $login = $request->input('login');
+        $password = $request->input('password');
 
-		// 1) Autenticação padrão por email+senha
-		if (str_contains($login, '@')) {
-			if (Auth::attempt(['email' => $login, 'password' => $password])) {
-				$request->session()->regenerate();
-				return redirect()->intended('admin/dashboard');
-			}
-		}
+        // 1) LOGIN POR EMAIL
+        if (Auth::attempt(['email' => $login, 'password' => $password])) {
+            $request->session()->regenerate();
+            return redirect()->intended('admin/dashboard');
+        }
 
-        // 2) Fallback para admin (mesmo sem @)
+        // 2) ADMIN DO .ENV
         $adminEmail = env('ADMIN_EMAIL', 'admin@example.com');
         $adminPassword = env('ADMIN_PASSWORD', 'password');
-        
+
         if ($login === $adminEmail && $password === $adminPassword) {
+
             $user = \App\Models\User::firstOrCreate(
                 ['email' => $adminEmail],
                 ['name' => 'Admin', 'password' => Hash::make($adminPassword)]
             );
-            
-            // Atualiza senha se necessário (caso tenha mudado no .env)
+
             if (!Hash::check($adminPassword, $user->password)) {
                 $user->password = Hash::make($adminPassword);
                 $user->save();
             }
 
             Auth::login($user);
+
             $request->session()->regenerate();
             return redirect()->intended('admin/dashboard');
         }
 
-		return back()->withErrors([
-			'login' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-		])->withInput($request->only('login'));
-	}
+        return back()->withErrors([
+            'login' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+        ])->withInput($request->only('login'));
+    }
 
-	
-	public function logout(Request $request)
-	{
-		Auth::logout();
-		$request->session()->invalidate();
-		$request->session()->regenerateToken();
-		return redirect('/');
-	}
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }
